@@ -1,0 +1,5 @@
+# Don't push build
+build/
+
+# Don't push database config
+*.properties
