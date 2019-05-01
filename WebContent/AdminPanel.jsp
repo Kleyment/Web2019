@@ -10,7 +10,7 @@
 <script id="twitter-wjs" src="${pageContext.request.contextPath}/widgets.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap.js"></script>
-<title>Formation</title>
+<title>Panneau Administrateur</title>
 </head>
 <body>
 <div class="container">
@@ -37,18 +37,6 @@
 		</div>
 	</div>
 </div>
-<form method = "post" action = "UserServlet">
-	<fieldset>
-		<legend> Inscrire un utilisateur </legend>
-		<label for = "pseudo">Pseudo<span class = "requis"></span></label>
-		<input type = "text" id = "nom" name = "nom" value = "" size = "20"/>
-		<br/>
-		<label for = "password">Mot de passe<span class = "requis"></span></label>
-		<input type = "password" id = "mdp" name = "mdp" value = "" size = "20"/>
-		<br/>
-		<input type = "submit" value = "Envoyer"/>		
-	</fieldset>
-</form>
 
 <table>
 <% 
