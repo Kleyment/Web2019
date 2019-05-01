@@ -41,6 +41,8 @@ private Connection co;
 	}
 	
 	public ResultSet getUser(String pseudo, String password) throws SQLException {
+		System.out.println(pseudo);
+		System.out.println(password);
 		PreparedStatement stmt = co.prepareStatement("SELECT * FROM users WHERE pseudo = ? AND password = ?");
 		stmt.setString(1, pseudo);
 		stmt.setString(2, password);

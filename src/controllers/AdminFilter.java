@@ -1,6 +1,9 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -10,17 +13,20 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
+import dao.UsersDAO;
+
 /**
  * Servlet Filter implementation class AdminFilter
  */
 @WebFilter("/AdminPanel")
 public class AdminFilter implements Filter {
 
+	private UsersDAO usersDAO;
     /**
      * Default constructor. 
      */
     public AdminFilter() {
-        // TODO Auto-generated constructor stub
+        usersDAO = new UsersDAO();
     }
 
 	/**
@@ -38,10 +44,22 @@ public class AdminFilter implements Filter {
 		String pseudo = request.getParameter("pseudo");
 		String password = request.getParameter("mdp");
 		if (!(pseudo == null && password == null)){
-			if(pseudo.contentEquals("admin") && password.contentEquals("admin")) {
-				RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
-				rd.forward(request, response);
+			ResultSet rs;
+			try {
+				rs = usersDAO.getUser(pseudo, password);
+				if(rs.next()) {
+					if (rs.getString(4).contentEquals("admin")) {
+						request.setAttribute("verif", "admin");
+						request.setAttribute("users", rs);
+						RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
+						rd.forward(request, response);
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 			rd.forward(request, response);

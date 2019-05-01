@@ -42,14 +42,18 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nom = request.getParameter("nom");
-		String mdp = request.getParameter("mdp");
+		String pseudo = request.getParameter("pseudo");
+		String password = request.getParameter("password");
 		try {
-			ResultSet rs = usersDAO.getUser(nom, mdp);
+			System.out.println(pseudo);
+			System.out.println(password);
+			ResultSet rs = usersDAO.getUser(pseudo, password);
 			if(rs.next()) {
-				if (rs.getString(2).contentEquals("admin") && rs.getString(3).contentEquals("admin")) {
+				if (rs.getString(4).contentEquals("admin")) {
 					request.setAttribute("verif", "admin");
-					RequestDispatcher rd = request.getRequestDispatcher("UserServlet");
+					ResultSet rsUsers = usersDAO.getUsers();
+					request.setAttribute("users", rsUsers);
+					RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
 					rd.forward(request, response);
 				} else {
 					RequestDispatcher rd = request.getRequestDispatcher("ProductServlet");
