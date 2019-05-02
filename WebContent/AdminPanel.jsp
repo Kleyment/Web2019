@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/connection.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">
 <script id="twitter-wjs" src="${pageContext.request.contextPath}/widgets.js"></script>
@@ -29,7 +29,7 @@
 				            <label for="password" class="col-lg-2 control-label">Mot de passe</label>
 				            <div class="col-lg-10">
 				              <input type="password" class="form-control" id="mdp" name="mdp" value="" placeholder="Mot de Passe" >
-				              <button id="submit" type="submit" class="btn btn-default">Envoyer</button>
+				              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
 				            </div>
 			          </div>
 	        		</form>
