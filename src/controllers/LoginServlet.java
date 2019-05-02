@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ProductsDAO;
 import dao.UsersDAO;
 
 /**
@@ -20,6 +21,7 @@ import dao.UsersDAO;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UsersDAO usersDAO;
+	private ProductsDAO productsDAO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,6 +29,7 @@ public class LoginServlet extends HttpServlet {
     public LoginServlet() {
         super();
         usersDAO = new UsersDAO();
+        productsDAO = new ProductsDAO();
         // TODO Auto-generated constructor stub
     }
 
@@ -49,7 +52,9 @@ public class LoginServlet extends HttpServlet {
 			if(rs.next()) {
 				if (rs.getString(4).contentEquals("admin")) {
 					ResultSet rsUsers = usersDAO.getUsers();
+					ResultSet rsProducts = productsDAO.getProducts();
 					request.setAttribute("users", rsUsers);
+					request.setAttribute("products", rsProducts);
 					RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
 					rd.forward(request, response);
 				} else {
