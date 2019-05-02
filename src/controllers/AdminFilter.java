@@ -49,7 +49,6 @@ public class AdminFilter implements Filter {
 				rs = usersDAO.getUser(pseudo, password);
 				if(rs.next()) {
 					if (rs.getString(4).contentEquals("admin")) {
-						request.setAttribute("verif", "admin");
 						request.setAttribute("users", rs);
 						RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
 						rd.forward(request, response);

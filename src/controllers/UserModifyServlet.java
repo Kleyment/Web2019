@@ -14,17 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UsersDAO;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class UserModifyServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/UserModifyServlet")
+public class UserModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UsersDAO usersDAO;
-       
+    private UsersDAO usersDAO; 
+    private int id;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public UserModifyServlet() {
         super();
         usersDAO = new UsersDAO();
         // TODO Auto-generated constructor stub
@@ -35,38 +36,41 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pseudo = request.getParameter("pseudo");
-		String password = request.getParameter("password");
-		try {
-			ResultSet rs = usersDAO.getUser(pseudo, password);
-			if(rs.next()) {
-				if (rs.getString(4).contentEquals("admin")) {
-					ResultSet rsUsers = usersDAO.getUsers();
-					request.setAttribute("users", rsUsers);
-					RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
-					rd.forward(request, response);
-				} else {
-					RequestDispatcher rd = request.getRequestDispatcher("ProductServlet");
-					rd.forward(request, response);
-				}
-				
-			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+		// TODO Auto-generated method stub
+		if (!(request.getParameter("modif") == null)) {
+			id = Integer.parseInt(request.getParameter("id"));
+			ResultSet rs;
+			try {
+				rs = usersDAO.getUser(id);
+				request.setAttribute("user", rs);
+				RequestDispatcher rd = request.getRequestDispatcher("Modification.jsp");
 				rd.forward(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} else {
+			String pseudo = request.getParameter("pseudo");
+			String password = request.getParameter("password");
+			ResultSet rs;
+			try {
+				usersDAO.modifyUser(id, pseudo, password);
+				rs = usersDAO.getUsers();
+				request.setAttribute("users", rs);
+				RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
+				rd.forward(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
 	}
 
 }
