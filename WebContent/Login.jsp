@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/connection.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">	
 <script id="twitter-wjs" src="${pageContext.request.contextPath}/widgets.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap.js"></script>
@@ -37,18 +37,5 @@
 		</div>
 	</div>
 </div>
-			<!-- <form method = "post" action = "LoginServlet">
-				<fieldset>
-					<legend> Login </legend>
-					<label for = "pseudo">Pseudo<span class = "requis"></span></label>
-					<input type = "text" id = "pseudo" name = "pseudo" value = "" size = "20"/>
-					<br/>
-					<label for = "password">Mot de passe<span class = "requis"></span></label>
-					<input type = "password" id = "password" name = "password" value = "" size = "20"/>
-					<br/>
-					<input type = "submit" value = "Envoyer"/>		
-				</fieldset>
-			</form> -->
-		
 </body>
 </html>

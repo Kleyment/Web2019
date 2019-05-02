@@ -24,4 +24,4 @@ CREATE OR REPLACE TABLE cart (
   PRIMARY KEY (idcart)
 );
 
-INSERT INTO users (pseudo, password, role) values ("admin", "admin", "administrateur");
+INSERT INTO users (pseudo, password, role) values ("admin", "admin", "admin	");
