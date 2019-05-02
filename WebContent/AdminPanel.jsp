@@ -35,31 +35,28 @@
 	        		</form>
 				</div>
 		</div>
-	</div>
-</div>
-
-<table>
+		<table class="table table-hover">
 <% 
 if (!(request.getAttribute("users") == null)){
 	ResultSet rs = (ResultSet)request.getAttribute("users");
-	out.println("<tr><th>ID</th><th>Pseudo</th><th>Mot de passe</th><th></th><th></th></tr>");
-	int i = 1;
+	out.println("<thead><tr><th>ID</th><th>Pseudo</th><th>Mot de passe</th><th></th><th></th></tr></thead><tbody>");
 	while(rs.next()){
 		out.println("<tr>");
 		out.println("<td>"+rs.getInt(1) + "</td>");
 		out.println("<td>"+rs.getString(2) + "</td>");
 		out.println("<td>"+ rs.getString(3) + "</td>");
 		out.println("<form method=\"post\" action=\"UserDeleteServlet\" class=\"inline\">");
-  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rs.getInt(1)+"\" class=\"link-button\">Supprimer</button></td></form>");
+  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rs.getInt(1)+"\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-edit\"> Editer</span></button></td></form>");
   		out.println("<form method=\"post\" action=\"UserModifyServlet\" class=\"inline\">");
   		out.println("<input type=\"hidden\" name=\"modif\" value=\"1\">");
-  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rs.getInt(1)+"\" class=\"link-button\">Modifier</button></td></form>");
+  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rs.getInt(1)+"\" class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-ban-circle\"> Supprimer</span></button></td></form>");
   		out.println("</tr>");
-		}
-	i++;
+	}
+	out.println("</tbody>");
 }
 %>
-</table>
-
+		</table>
+	</div>
+</div>
 </body>
 </html>
