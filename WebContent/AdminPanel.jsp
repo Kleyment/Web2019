@@ -80,7 +80,8 @@ if (!(request.getAttribute("users") == null)){
 		        		</form>
 					</div>
 				</div>
-		
+	
+	<table class="table table-hover">	
 <% 
 if (!(request.getAttribute("products") == null)){
 	ResultSet rsProducts = (ResultSet)request.getAttribute("products");
@@ -99,7 +100,7 @@ if (!(request.getAttribute("products") == null)){
 	}
 	out.println("</tbody>");
 }
-%>		
+%>		</table>
 		</div>
 	</div>
 </div>
