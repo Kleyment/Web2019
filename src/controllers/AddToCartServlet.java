@@ -37,45 +37,18 @@ public class AddToCartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("OK");
+		if ((request.getParameter("id") != null)) {
+			id = Integer.parseInt(request.getParameter("id"));
+			System.out.println(id);
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		if (!(request.getParameter("modif") == null)) {
-			id = Integer.parseInt(request.getParameter("id"));
-			ResultSet rs;
-			try {
-				rs = usersDAO.getUser(id);
-				request.setAttribute("user", rs);
-				RequestDispatcher rd = request.getRequestDispatcher("ModificationUser.jsp");
-				rd.forward(request, response);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		} else {
-			String pseudo = request.getParameter("pseudo");
-			String password = request.getParameter("password");
-			String role = request.getParameter("role");
-			ResultSet rsUser;
-			try {
-				usersDAO.modifyUser(id, pseudo, password, AddToCartServletrole);
-				rsUser = usersDAO.getUsers();
-				ResultSet rsProduct = productsDAO.getProducts();
-				request.setAttribute("users", rsUser);
-				request.setAttribute("products", rsProduct);
-				RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
-				rd.forward(request, response);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		//Rien
 	}
 
 }

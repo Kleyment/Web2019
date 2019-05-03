@@ -7,7 +7,7 @@ function addToCart(productid) {
 	var xhr = new XMLHttpRequest();
 	xhr.overrideMimeType("application/json");
 
-	xhr.open('POST', 'AddToCartServlet', true);
+	xhr.open('GET', 'AddToCartServlet?id='+productid, true);
 
 	xhr.onload = function(e) {
 		if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -15,7 +15,7 @@ function addToCart(productid) {
 			confirm();
 		}
 	};
-	xhr.send("id=" + productid);
+	xhr.send();
 }
 
 function confirm() {
