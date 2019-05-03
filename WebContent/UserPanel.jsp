@@ -17,7 +17,7 @@
 				<a class="nav-link faux-lien">Bienvenue Jean-Patrick</a>
 			</li>
 			<li class="nav-item items">
-				<a class="nav-link" href="./Paner.jsp">Votre panier</a>
+				<a class="nav-link" href="./Panier.jsp">Votre panier</a>
 			</li>
 		</ul>
 	    </div>
@@ -30,7 +30,7 @@
 	              </div>
 	              <div class="row">
 	                <div class="image col-sm-3">
-	                	<img src="${pageContext.request.contextPath}/images/test.jpg" class="image" alt="versusKleymanBossFight.png">
+	                	<img src="${pageContext.request.contextPath}/images/test.jpg" class="image" alt="Meme guy">
 	                </div>
 	                <div class="description col-sm-5">
 	                  Description du produit
@@ -43,7 +43,7 @@
 	                </div>
 	                <div class="col-sm-4 zone-prix">
 	                  <div class="prix">Prix 5 €</div>
-	                  <a id="btn-panier" class="btn btn-primary float-right btn-lg" href="./AddPanier.jsp" role="button">
+	                  <a id="btn-panier" class="btn btn-primary float-right btn-lg" onclick="addToCart(1);" role="button">
 	                  <span class="glyphicon glyphicon-shopping-cart"> Ajouter au panier</span></a>
 	                </div>
 	              </div>
@@ -52,5 +52,6 @@
 		</div>
 	</div>
 </div>
+<script src="${pageContext.request.contextPath}/js/scriptForAjax.js"></script>
 </body>
 </html>

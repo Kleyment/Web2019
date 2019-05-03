@@ -17,8 +17,8 @@ import dao.UsersDAO;
 /**
  * Servlet implementation class UserModifyServlet
  */
-@WebServlet("/UserModifyServlet")
-public class UserModifyServlet extends HttpServlet {
+@WebServlet("/AddToCartServlet")
+public class AddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private UsersDAO usersDAO; 
     private ProductsDAO productsDAO;
@@ -27,11 +27,10 @@ public class UserModifyServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserModifyServlet() {
+    public AddToCartServlet() {
         super();
         usersDAO = new UsersDAO();
         productsDAO = new ProductsDAO();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
