@@ -2,6 +2,20 @@
     margin-top: 15px;
 }
 
+.faux-lien:hover {
+    text-decoration: none;
+}
+
+.navbar-nav {
+   display: contents;
+}
+
+.items {
+    display: inline;
+    font-size: 35px;
+    margin-left: 10%
+}
+
 .nomproduit {
     padding-left: 15px;
     font-size: 25px;

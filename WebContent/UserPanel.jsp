@@ -11,13 +11,13 @@
 <body>
 <div class="containerforcontainer">
 	<div class="container">
-		<div class="navbar navbar-expand-lg navbar-light" id="navbar">
+		<div class="navbar" id="navbar">
 		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" href="./Paner.jsp">Votre panier</a>
+			<li class="nav-item items">
+				<a class="nav-link faux-lien">Bienvenue Jean-Patrick</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="./Info.jsp">Info</a>
+			<li class="nav-item items">
+				<a class="nav-link" href="./Paner.jsp">Votre panier</a>
 			</li>
 		</ul>
 	    </div>
