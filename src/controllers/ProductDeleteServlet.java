@@ -15,21 +15,21 @@ import dao.ProductsDAO;
 import dao.UsersDAO;
 
 /**
- * Servlet implementation class UserDeleteServlet
+ * Servlet implementation class ProductDeleteServlet
  */
-@WebServlet("/UserDeleteServlet")
-public class UserDeleteServlet extends HttpServlet {
+@WebServlet("/ProductDeleteServlet")
+public class ProductDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UsersDAO usersDAO;
 	private ProductsDAO productsDAO;
-	
+	private UsersDAO usersDAO;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserDeleteServlet() {
+    public ProductDeleteServlet() {
         super();
-		usersDAO = new UsersDAO();
-		productsDAO = new ProductsDAO();
+        productsDAO = new ProductsDAO();
+        usersDAO = new UsersDAO();
         // TODO Auto-generated constructor stub
     }
 
@@ -38,7 +38,7 @@ public class UserDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -46,11 +46,11 @@ public class UserDeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ResultSet rsUser;
+		ResultSet rsProduct;
 		try {
-			usersDAO.deleteUser(Integer.parseInt(request.getParameter("id")));
-			rsUser = usersDAO.getUsers();
-			ResultSet rsProduct = productsDAO.getProducts();
+			productsDAO.deleteProduct(Integer.parseInt(request.getParameter("id")));
+			rsProduct = productsDAO.getProducts();
+			ResultSet rsUser = usersDAO.getUsers();
 			request.setAttribute("users", rsUser);
 			request.setAttribute("products", rsProduct);
 			RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");

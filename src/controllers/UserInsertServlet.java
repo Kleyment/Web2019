@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ProductsDAO;
 import dao.UsersDAO;
 
 /**
@@ -19,7 +20,8 @@ import dao.UsersDAO;
 @WebServlet("/UserInsertServlet")
 public class UserInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private UsersDAO usersDAO;  
+    private UsersDAO usersDAO; 
+    private ProductsDAO productsDAO;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,6 +29,7 @@ public class UserInsertServlet extends HttpServlet {
     public UserInsertServlet() {
         super();
         usersDAO = new UsersDAO();
+        productsDAO = new ProductsDAO();
     }
 
 	/**
@@ -46,8 +49,10 @@ public class UserInsertServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		try {
 			usersDAO.insertUser(pseudo, password);
-			ResultSet rs = usersDAO.getUsers();
-			request.setAttribute("users", rs);
+			ResultSet rsUser = usersDAO.getUsers();
+			ResultSet rsProduct = productsDAO.getProducts();
+			request.setAttribute("users", rsUser);
+			request.setAttribute("products", rsProduct);
 			RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
 			rd.forward(request, response);
 		} catch (SQLException e) {

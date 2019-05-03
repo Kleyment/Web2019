@@ -15,19 +15,19 @@ import dao.ProductsDAO;
 import dao.UsersDAO;
 
 /**
- * Servlet implementation class UserModifyServlet
+ * Servlet implementation class ProductModifyServlet
  */
-@WebServlet("/UserModifyServlet")
-public class UserModifyServlet extends HttpServlet {
+@WebServlet("/ProductModifyServlet")
+public class ProductModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private UsersDAO usersDAO; 
-    private ProductsDAO productsDAO;
-    private int id;
-	
+	private UsersDAO usersDAO;
+	private ProductsDAO productsDAO;
+	private int id;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserModifyServlet() {
+    public ProductModifyServlet() {
         super();
         usersDAO = new UsersDAO();
         productsDAO = new ProductsDAO();
@@ -39,6 +39,7 @@ public class UserModifyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -50,9 +51,9 @@ public class UserModifyServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			ResultSet rs;
 			try {
-				rs = usersDAO.getUser(id);
-				request.setAttribute("user", rs);
-				RequestDispatcher rd = request.getRequestDispatcher("Modification.jsp");
+				rs = productsDAO.getProduct(id);
+				request.setAttribute("product", rs);
+				RequestDispatcher rd = request.getRequestDispatcher("ModificationProduct.jsp");
 				rd.forward(request, response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -60,14 +61,13 @@ public class UserModifyServlet extends HttpServlet {
 			}
 
 		} else {
-			String pseudo = request.getParameter("pseudo");
-			String password = request.getParameter("password");
-			String role = request.getParameter("role");
-			ResultSet rsUser;
+			String name = request.getParameter("name");
+			Double price = Double.parseDouble(request.getParameter("price"));
+			ResultSet rsProduct;
 			try {
-				usersDAO.modifyUser(id, pseudo, password, role);
-				rsUser = usersDAO.getUsers();
-				ResultSet rsProduct = productsDAO.getProducts();
+				productsDAO.modifyProduct(id, name, price);
+				rsProduct = productsDAO.getProducts();
+				ResultSet rsUser = usersDAO.getUsers();
 				request.setAttribute("users", rsUser);
 				request.setAttribute("products", rsProduct);
 				RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");

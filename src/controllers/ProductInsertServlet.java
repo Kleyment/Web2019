@@ -15,21 +15,21 @@ import dao.ProductsDAO;
 import dao.UsersDAO;
 
 /**
- * Servlet implementation class UserDeleteServlet
+ * Servlet implementation class ProductInsertServlet
  */
-@WebServlet("/UserDeleteServlet")
-public class UserDeleteServlet extends HttpServlet {
+@WebServlet("/ProductInsertServlet")
+public class ProductInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UsersDAO usersDAO;
 	private ProductsDAO productsDAO;
-	
+	private UsersDAO usersDAO;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserDeleteServlet() {
+    public ProductInsertServlet() {
         super();
-		usersDAO = new UsersDAO();
-		productsDAO = new ProductsDAO();
+        productsDAO = new ProductsDAO();
+        usersDAO = new UsersDAO();
         // TODO Auto-generated constructor stub
     }
 
@@ -38,7 +38,7 @@ public class UserDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -46,13 +46,14 @@ public class UserDeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ResultSet rsUser;
+		String name = request.getParameter("name");
+		Double price = Double.parseDouble(request.getParameter("price"));
 		try {
-			usersDAO.deleteUser(Integer.parseInt(request.getParameter("id")));
-			rsUser = usersDAO.getUsers();
-			ResultSet rsProduct = productsDAO.getProducts();
-			request.setAttribute("users", rsUser);
-			request.setAttribute("products", rsProduct);
+			productsDAO.insertProduct(name, price);
+			ResultSet rsProducts = productsDAO.getProducts();
+			ResultSet rsUsers = usersDAO.getUsers();
+			request.setAttribute("users", rsUsers);
+			request.setAttribute("products", rsProducts);
 			RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
 			rd.forward(request, response);
 		} catch (SQLException e) {
