@@ -65,7 +65,7 @@ public class UserModifyServlet extends HttpServlet {
 			String role = request.getParameter("role");
 			ResultSet rsUser;
 			try {
-				usersDAO.modifyUser(id, pseudo, password, AddToCartServletrole);
+				usersDAO.modifyUser(id, pseudo, password, role);
 				rsUser = usersDAO.getUsers();
 				ResultSet rsProduct = productsDAO.getProducts();
 				request.setAttribute("users", rsUser);
