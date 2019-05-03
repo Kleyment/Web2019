@@ -59,9 +59,10 @@ public class UserModifyServlet extends HttpServlet {
 		} else {
 			String pseudo = request.getParameter("pseudo");
 			String password = request.getParameter("password");
+			String role = request.getParameter("role");
 			ResultSet rs;
 			try {
-				usersDAO.modifyUser(id, pseudo, password);
+				usersDAO.modifyUser(id, pseudo, password, role);
 				rs = usersDAO.getUsers();
 				request.setAttribute("users", rs);
 				RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");

@@ -15,26 +15,27 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="panel panel-default">
-			<div class="panel-heading">Inscrire un utilisateur</div>
-	        	<div class="panel-body">
-	        		<form class="form-horizontal" method="post" action = "UserInsertServlet">
-		          		<div class="form-group">
-				            <label for="pseudo" class="col-lg-2 control-label">Pseudo</label>
-				            <div class="col-lg-10">
-				              <input type="text" class="form-control" id="pseudo" name="pseudo" value="" placeholder="Pseudo">
-				            </div>
-			          	</div>
-			          	<div class="form-group">
-				            <label for="password" class="col-lg-2 control-label">Mot de passe</label>
-				            <div class="col-lg-10">
-				              <input type="password" class="form-control" id="password" name="password" value="" placeholder="Mot de Passe" >
-				              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
-				            </div>
-			          </div>
-	        		</form>
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">Inscrire un utilisateur</div>
+		        	<div class="panel-body">
+		        		<form class="form-horizontal" method="post" action = "UserInsertServlet">
+			          		<div class="form-group">
+					            <label for="pseudo" class="col-lg-2 control-label">Pseudo</label>
+					            <div class="col-lg-10">
+					              <input type="text" class="form-control" id="pseudo" name="pseudo" value="" placeholder="Pseudo">
+					            </div>
+				          	</div>
+				          	<div class="form-group">
+					            <label for="password" class="col-lg-2 control-label">Mot de passe</label>
+					            <div class="col-lg-10">
+					              <input type="password" class="form-control" id="password" name="password" value="" placeholder="Mot de Passe" >
+					              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
+					            </div>
+				          </div>
+		        		</form>
+					</div>
 				</div>
-		</div>
 		<table class="table table-hover">
 <% 
 if (!(request.getAttribute("users") == null)){
@@ -57,28 +58,29 @@ if (!(request.getAttribute("users") == null)){
 }
 %>
 		</table>
-		
-		<div class="panel panel-default">
-			<div class="panel-heading">Ajouter un produit</div>
-	        	<div class="panel-body">
-	        		<form class="form-horizontal" method="post" action = "ProductInsertServlet">
-		          		<div class="form-group">
-				            <label for="pseudo" class="col-lg-2 control-label">Nom</label>
-				            <div class="col-lg-10">
-				              <input type="text" class="form-control" id="name" name="name" value="" placeholder="Nom">
-				            </div>
-			          	</div>
-			          	<div class="form-group">
-				            <label for="price" class="col-lg-2 control-label">Prix</label>
-				            <div class="col-lg-10">
-				              <input type="text" class="form-control" id="price" name="price" value="" placeholder="10.5" >
-				              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
-				            </div>
-			          </div>
-	        		</form>
-				</div>
 		</div>
-	<table class="table table-hover">		
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">Ajouter un produit</div>
+		        	<div class="panel-body">
+		        		<form class="form-horizontal" method="post" action = "ProductInsertServlet">
+			          		<div class="form-group">
+					            <label for="pseudo" class="col-lg-2 control-label">Nom</label>
+					            <div class="col-lg-10">
+					              <input type="text" class="form-control" id="name" name="name" value="" placeholder="Nom">
+					            </div>
+				          	</div>
+				          	<div class="form-group">
+					            <label for="price" class="col-lg-2 control-label">Prix</label>
+					            <div class="col-lg-10">
+					              <input type="text" class="form-control" id="price" name="price" value="" placeholder="10.5" >
+					              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
+					            </div>
+				          </div>
+		        		</form>
+					</div>
+				</div>
+		
 <% 
 if (!(request.getAttribute("products") == null)){
 	ResultSet rsProducts = (ResultSet)request.getAttribute("products");
@@ -87,7 +89,7 @@ if (!(request.getAttribute("products") == null)){
 		out.println("<tr>");
 		out.println("<td>"+rsProducts.getInt(1) + "</td>");
 		out.println("<td>"+rsProducts.getString(2) + "</td>");
-		out.println("<td>"+ rsProducts.getDouble(3) + " €</td>");
+		out.println("<td>"+ rsProducts.getDouble(3) + "</td>");
 		out.println("<form method=\"post\" action=\"ProductModifyServlet\" class=\"inline\">");
   		out.println("<input type=\"hidden\" name=\"modif\" value=\"1\">");
   		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rsProducts.getInt(1)+"\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-edit\"> Editer</span></button></td></form>");
@@ -98,7 +100,7 @@ if (!(request.getAttribute("products") == null)){
 	out.println("</tbody>");
 }
 %>		
-	</table>	
+		</div>
 	</div>
 </div>
 </body>

@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ page import ="java.sql.ResultSet"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/connection.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">
 <title>Modification</title>
 </head>
@@ -16,9 +17,42 @@ if (!(request.getAttribute("user") == null)){
 		rs.next();
 	}
 %>
-
-
-
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">Modifier un utilisateur</div>
+		        	<div class="panel-body">
+		        		<form id="modify" class="form-horizontal" method="post" action = "UserModifyServlet">
+			          		<div class="form-group">
+					            <label for="pseudo" class="col-lg-2 control-label">Pseudo</label>
+					            <div class="col-lg-10">
+			            			<input type = "text" class="form-control" id = "pseudo" name = "pseudo" value = "<% out.println(rs.getString(2)); %>" size = "20" placeholder="Pseudo"/>
+					            </div>
+				          	</div>
+				          	<div class="form-group">
+					            <label for="password" class="col-lg-2 control-label">Mot de passe</label>
+					            <div class="col-lg-10">
+				              	<input type = "password" class="form-control" id = "password" name = "password" value="<% out.println(rs.getString(3)); %> " size = "20" placeholder="Mot de Passe"/>
+				            </div>
+				          </div>
+				          <div class="form-group">
+					            <label for="role" class="col-lg-2 control-label">Role</label>
+					            <div class="col-lg-10">			 
+								    <select name="role" class="form-control">
+										<option value="user" <%if (rs.getString(4).contentEquals("user")) { out.println("selected=\"selected\"");} %>>User</option>
+										<option value="admin"<%if (rs.getString(4).contentEquals("admin")) { out.println("selected=\"selected\"");} %>>Admin</option>
+									</select>
+									<button id="submit" type="submit" class="btn btn-default">Modifier</button>
+						   		</div>
+							</div>
+		        		</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  
 <form method = "post" action = "UserModifyServlet">
 	<fieldset>
 		<legend> Modification </legend>
@@ -30,7 +64,7 @@ if (!(request.getAttribute("user") == null)){
 		<br/>
 		<input type = "submit" value = "Envoyer"/>		
 	</fieldset>
-</form>
+</form>-->
 
 </body>
 </html>

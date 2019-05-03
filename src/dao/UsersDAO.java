@@ -40,6 +40,15 @@ private Connection co;
 		stmt.executeUpdate();
 	}
 	
+	public void modifyUser(int id, String pseudo, String password, String role) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("UPDATE users SET pseudo = ?, password = ?, role = ? WHERE id = ?");
+		stmt.setString(1, pseudo);
+		stmt.setString(2, password);
+		stmt.setString(3, role);
+		stmt.setInt(4, id);
+		stmt.executeUpdate();
+	}
+	
 	public ResultSet getUser(String pseudo, String password) throws SQLException {
 		PreparedStatement stmt = co.prepareStatement("SELECT * FROM users WHERE pseudo = ? AND password = ?");
 		stmt.setString(1, pseudo);
