@@ -33,7 +33,13 @@ if (!(request.getAttribute("product") == null)){
 				          	<div class="form-group">
 					            <label for="price" class="col-lg-2 control-label">Prix</label>
 					            <div class="col-lg-10">
-				              	<input type = "text" class="form-control" id = "price" name = "price" value="<% out.println(rs.getDouble(3)); %> " size = "20" placeholder="Price"/>
+				              		<input type = "text" class="form-control" id = "price" name = "price" value="<% out.println(rs.getDouble(3)); %> " size = "20" placeholder="Price"/>
+				            	</div>
+				            </div>
+				            <div class="form-group">
+					            <label for="image" class="col-lg-2 control-label">Nom de l'image</label>
+					            <div class="col-lg-10">
+				              	<input type = "text" class="form-control" id = "image" name = "image" value="<% if (!(rs.getString(4) == null)) {out.println(rs.getString(4));} %> " size = "20" placeholder="Price"/>
 				         		<button id="submit" type="submit" class="btn btn-default">Modifier</button>
 				            </div>				            
 				          </div>				

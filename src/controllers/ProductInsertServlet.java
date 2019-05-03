@@ -48,8 +48,16 @@ public class ProductInsertServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String name = request.getParameter("name");
 		Double price = Double.parseDouble(request.getParameter("price"));
+		String image = null;
+		if (!(request.getParameter("image") == null)) {
+			image = request.getParameter("image");
+		}
 		try {
-			productsDAO.insertProduct(name, price);
+			if (image != null) {
+				productsDAO.insertProduct(name, price,image);
+			} else {
+				productsDAO.insertProduct(name, price);
+			}
 			ResultSet rsProducts = productsDAO.getProducts();
 			ResultSet rsUsers = usersDAO.getUsers();
 			request.setAttribute("users", rsUsers);

@@ -82,10 +82,16 @@ if (!(request.getAttribute("users") == null)){
 				          	<div class="form-group">
 					            <label for="price" class="col-lg-2 control-label">Prix</label>
 					            <div class="col-lg-10">
-					              <input type="text" class="form-control" id="price" name="price" value="" placeholder="10.5" >
-					              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
+					              <input type="text" class="form-control" id="price" name="price" value="" placeholder="10.5" >					              
 					            </div>
 				          </div>
+				          <div class="form-group">
+					            <label for="image" class="col-lg-2 control-label">Nom de l'image</label>
+					            <div class="col-lg-10">
+					              <input type="text" class="form-control" id="image" name="image" value="" placeholder="Image.jpg">
+					            </div>
+					            <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
+				          	</div>
 		        		</form>
 					</div>
 				</div>
@@ -94,12 +100,19 @@ if (!(request.getAttribute("users") == null)){
 <% 
 if (!(request.getAttribute("products") == null)){
 	ResultSet rsProducts = (ResultSet)request.getAttribute("products");
-	out.println("<thead><tr><th>ID</th><th>Nom</th><th>Prix</th><th></th><th></th></tr></thead><tbody>");
+	out.println("<thead><tr><th>ID</th><th>Nom</th><th>Prix</th><th></th><th></th><th></th></tr></thead><tbody>");
 	while(rsProducts.next()){
 		out.println("<tr>");
 		out.println("<td>"+rsProducts.getInt(1) + "</td>");
 		out.println("<td>"+rsProducts.getString(2) + "</td>");
 		out.println("<td>"+ rsProducts.getDouble(3) + " €</td>");
+		out.println("<td>");
+		if (!(rsProducts.getString(4) == null)){
+			%>
+			<img src="${pageContext.request.contextPath}/images/<%=rsProducts.getString(4)%>" class="image">
+			<%
+		}
+		out.println("</td>");
 		out.println("<form method=\"post\" action=\"ProductModifyServlet\" class=\"inline\">");
   		out.println("<input type=\"hidden\" name=\"modif\" value=\"1\">");
   		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rsProducts.getInt(1)+"\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-edit\"> Editer</span></button></td></form>");
