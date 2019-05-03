@@ -14,7 +14,7 @@ CREATE OR REPLACE TABLE products (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NOT NULL,
   price DOUBLE NOT NULL,
-  image VARCHAR(45) NOT NULL,
+  image VARCHAR(45),
   PRIMARY KEY (id)
 );
 
@@ -25,3 +25,4 @@ CREATE OR REPLACE TABLE cart (
 );
 
 INSERT INTO users (pseudo, password, role) values ("admin", "admin", "admin	");
+INSERT INTO products (name,price,image) VALUES ("Razer Naga",80.0,NULL);

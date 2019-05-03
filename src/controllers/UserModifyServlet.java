@@ -52,7 +52,7 @@ public class UserModifyServlet extends HttpServlet {
 			try {
 				rs = usersDAO.getUser(id);
 				request.setAttribute("user", rs);
-				RequestDispatcher rd = request.getRequestDispatcher("Modification.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("ModificationUser.jsp");
 				rd.forward(request, response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

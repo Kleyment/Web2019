@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/connection.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">
-<title>Modification</title>
+<title>Modification Utilisateur</title>
 </head>
 <body>
 
@@ -52,20 +52,6 @@ if (!(request.getAttribute("user") == null)){
 		</div>
 	</div>
 </div>
-<!--  
-<form method = "post" action = "UserModifyServlet">
-	<fieldset>
-		<legend> Modification </legend>
-		<label for = "pseudo">Pseudo<span class = "requis"></span></label>
-		<input type = "text" id = "pseudo" name = "pseudo" value = "<% out.println(rs.getString(2)); %>" size = "20"/>
-		<br/>
-		<label for = "password">Mot de passe<span class = "requis"></span></label>
-		<input type = "password" id = "password" name = "password" value = "<% out.println(rs.getString(3)); %> " size = "20"/>
-		<br/>
-		<input type = "submit" value = "Envoyer"/>		
-	</fieldset>
-</form>-->
-
 </body>
 </html>
 
