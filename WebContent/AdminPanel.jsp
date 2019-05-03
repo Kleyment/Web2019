@@ -102,7 +102,6 @@ if (!(request.getAttribute("products") == null)){
 %>		
 		</div>
 	</div>
-	</div>
 </div>
 </body>
 </html>
