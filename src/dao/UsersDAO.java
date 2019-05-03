@@ -13,11 +13,11 @@ private Connection co;
 		co = ConnexionDB.getInstance().getCnx();
 	}
 	
-	public void insertUser(String pseudo, String password) throws SQLException {
+	public void insertUser(String pseudo, String password, String role) throws SQLException {
 		PreparedStatement stmt = co.prepareStatement("INSERT INTO users (pseudo,password,role) values (?,?,?);");
 		stmt.setString(1, pseudo);
 		stmt.setString(2, password);
-		stmt.setString(3, "user");
+		stmt.setString(3, role);
 		stmt.executeUpdate();
 	}
 	

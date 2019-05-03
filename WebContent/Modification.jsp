@@ -40,8 +40,8 @@ if (!(request.getAttribute("user") == null)){
 					            <label for="role" class="col-lg-2 control-label">Role</label>
 					            <div class="col-lg-10">			 
 								    <select name="role" class="form-control">
-										<option value="user" <%if (rs.getString(4).contentEquals("user")) { out.println("selected=\"selected\"");} %>>User</option>
-										<option value="admin"<%if (rs.getString(4).contentEquals("admin")) { out.println("selected=\"selected\"");} %>>Admin</option>
+										<option value="user" <%if (rs.getString(4).contentEquals("user")) { out.println("selected=\"selected\"");} %>>Utilisateur</option>
+										<option value="admin"<%if (rs.getString(4).contentEquals("admin")) { out.println("selected=\"selected\"");} %>>Administrateur</option>
 									</select>
 									<button id="submit" type="submit" class="btn btn-default">Modifier</button>
 						   		</div>

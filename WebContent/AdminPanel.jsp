@@ -30,9 +30,18 @@
 					            <label for="password" class="col-lg-2 control-label">Mot de passe</label>
 					            <div class="col-lg-10">
 					              <input type="password" class="form-control" id="password" name="password" value="" placeholder="Mot de Passe" >
-					              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
 					            </div>
 				          </div>
+				          <div class="form-group">
+					            <label for="role" class="col-lg-2 control-label">Role</label>
+					            <div class="col-lg-10">			 
+								    <select name="role" class="form-control">
+										<option value="user">Utilisateur</option>
+										<option value="admin">Administrateur</option>
+									</select>
+									<button id="submit" type="submit" class="btn btn-default">Ajouter</button>
+						   		</div>
+							</div>
 		        		</form>
 					</div>
 				</div>

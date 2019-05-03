@@ -47,8 +47,9 @@ public class UserInsertServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String pseudo = request.getParameter("pseudo");
 		String password = request.getParameter("password");
+		String role = request.getParameter("role");
 		try {
-			usersDAO.insertUser(pseudo, password);
+			usersDAO.insertUser(pseudo, password, role);
 			ResultSet rsUser = usersDAO.getUsers();
 			ResultSet rsProduct = productsDAO.getProducts();
 			request.setAttribute("users", rsUser);
