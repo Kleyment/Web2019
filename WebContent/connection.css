@@ -1,3 +1,28 @@
 #submit {
     margin-top: 15px;
 }
+
+.nomproduit {
+    padding-left: 15px;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.image {
+    width: 250px;
+    height: 200px;
+}
+
+.description {
+    font-size: 20px
+}
+
+.prix {
+    font-size: 25px;
+    margin-left: 80px;
+    margin-bottom: 10px;
+}
+
+.zone-prix {
+    margin-top: 20px;
+}
