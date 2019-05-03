@@ -78,7 +78,7 @@ if (!(request.getAttribute("users") == null)){
 	        		</form>
 				</div>
 		</div>
-		
+	<table class="table table-hover">		
 <% 
 if (!(request.getAttribute("products") == null)){
 	ResultSet rsProducts = (ResultSet)request.getAttribute("products");
@@ -87,7 +87,7 @@ if (!(request.getAttribute("products") == null)){
 		out.println("<tr>");
 		out.println("<td>"+rsProducts.getInt(1) + "</td>");
 		out.println("<td>"+rsProducts.getString(2) + "</td>");
-		out.println("<td>"+ rsProducts.getDouble(3) + "</td>");
+		out.println("<td>"+ rsProducts.getDouble(3) + " €</td>");
 		out.println("<form method=\"post\" action=\"ProductModifyServlet\" class=\"inline\">");
   		out.println("<input type=\"hidden\" name=\"modif\" value=\"1\">");
   		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rsProducts.getInt(1)+"\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-edit\"> Editer</span></button></td></form>");
@@ -98,7 +98,7 @@ if (!(request.getAttribute("products") == null)){
 	out.println("</tbody>");
 }
 %>		
-		
+	</table>	
 	</div>
 </div>
 </body>
