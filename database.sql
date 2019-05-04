@@ -24,5 +24,8 @@ CREATE OR REPLACE TABLE cart (
   PRIMARY KEY (idcart)
 );
 
-INSERT INTO users (pseudo, password, role) values ("admin", "admin", "admin	");
-INSERT INTO products (name,price,image) VALUES ("Razer Naga",80.0,NULL);
+INSERT INTO users (pseudo, password, role) values ("admin", "admin", "admin");
+INSERT INTO users (pseudo, password, role) values ("clem", "azerty", "user");
+INSERT INTO users (pseudo, password, role) values ("marvin, "formytho", "user");
+INSERT INTO products (name,price,image) VALUES ("Razer Naga",80.0,"razer_naga.jpg");
+INSERT INTO products (name,price,image) VALUES ("LDLC Fox Meca Red",99.95,"ldlc_fox_meca_red.jpg");

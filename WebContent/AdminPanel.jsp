@@ -58,9 +58,9 @@ if (!(request.getAttribute("users") == null)){
 		out.println("<td>"+ rs.getString(4) + "</td>");
 		out.println("<form method=\"post\" action=\"UserModifyServlet\" class=\"inline\">");
   		out.println("<input type=\"hidden\" name=\"modif\" value=\"1\">");
-  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rs.getInt(1)+"\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-edit\"> Editer</span></button></td></form>");
+  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rs.getInt(1)+"\" class=\"btn btn-primary style-bouton\"><span class=\"glyphicon glyphicon-edit\"/> <span class=\"style-bouton\">Editer</button></td></form>");
   		out.println("<form method=\"post\" action=\"UserDeleteServlet\" class=\"inline\">");
-  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rs.getInt(1)+"\" class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-ban-circle\"> Supprimer</span></button></td></form>");
+  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rs.getInt(1)+"\" class=\"btn btn-danger style-bouton\"><span class=\"glyphicon glyphicon-ban-circle\"/> <span class=\"style-bouton\">Supprimer</button></td></form>");
   		out.println("</tr>");
 	}
 	out.println("</tbody>");
@@ -89,8 +89,8 @@ if (!(request.getAttribute("users") == null)){
 					            <label for="image" class="col-lg-2 control-label">Nom de l'image</label>
 					            <div class="col-lg-10">
 					              <input type="text" class="form-control" id="image" name="image" value="" placeholder="Image.jpg">
+					              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
 					            </div>
-					            <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
 				          	</div>
 		        		</form>
 					</div>
@@ -115,9 +115,9 @@ if (!(request.getAttribute("products") == null)){
 		out.println("</td>");
 		out.println("<form method=\"post\" action=\"ProductModifyServlet\" class=\"inline\">");
   		out.println("<input type=\"hidden\" name=\"modif\" value=\"1\">");
-  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rsProducts.getInt(1)+"\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-edit\"> Editer</span></button></td></form>");
+  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rsProducts.getInt(1)+"\" class=\"btn btn-primary style-bouton\"><span class=\"glyphicon glyphicon-edit\"/> <span class=\"style-bouton\">Editer</button></td></form>");
   		out.println("<form method=\"post\" action=\"ProductDeleteServlet\" class=\"inline\">");
-  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rsProducts.getInt(1)+"\" class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-ban-circle\"> Supprimer</span></button></td></form>");
+  		out.println("<td><button type=\"submit\" name=\"id\" value=\""+rsProducts.getInt(1)+"\" class=\"btn btn-danger style-bouton\"><span class=\"glyphicon glyphicon-ban-circle\"/> <span class=\"style-bouton\">Supprimer</span></button></td></form>");
   		out.println("</tr>");
 	}
 	out.println("</tbody>");

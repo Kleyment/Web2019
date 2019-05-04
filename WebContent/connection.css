@@ -2,6 +2,10 @@
     margin-top: 15px;
 }
 
+.style-bouton {
+    font-family: Raleway, Helvetica, Arial, sans-serif;
+}
+
 .faux-lien:hover {
     text-decoration: none;
 }
@@ -23,8 +27,8 @@
 }
 
 .image {
-    width: 250px;
-    height: 200px;
+    max-width: 125px;
+    max-height: 125px;
 }
 
 .description {
@@ -32,11 +36,13 @@
 }
 
 .prix {
+    text-align: right;
     font-size: 25px;
-    margin-left: 80px;
-    margin-bottom: 10px;
+    text-align: right;
+    margin-bottom: 20px;
 }
 
 .zone-prix {
+    text-align: right;
     margin-top: 20px;
 }
