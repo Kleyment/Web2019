@@ -109,7 +109,7 @@ if (!(request.getAttribute("products") == null)){
 		out.println("<td>");
 		if (!(rsProducts.getString(4) == null)){
 			%>
-			<img src="${pageContext.request.contextPath}/images/<%=rsProducts.getString(4)%>" class="image">
+			<img src="${pageContext.request.contextPath}/images/<%=rsProducts.getString(4)%>" class="image-admin">
 			<%
 		}
 		out.println("</td>");

@@ -36,7 +36,7 @@
 			        out.println("<div class=\"row\">");
 			          out.println("<div class=\"image col-sm-3\">");
 			          	%>
-			          	<img src="${pageContext.request.contextPath}/images/<%=rs.getString(4)%>"class="image" alt="Meme guy">
+			          	<img src="${pageContext.request.contextPath}/images/<%=rs.getString(4)%>"class="image-user" alt="Meme guy">
 			          	<%
 			          out.println("</div>");
 			          out.println("<div class=\"description col-sm-5\">");

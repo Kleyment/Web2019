@@ -26,9 +26,14 @@
     margin-bottom: 20px;
 }
 
-.image {
+.image-admin {
     max-width: 125px;
     max-height: 125px;
+}
+
+.image-user {
+    width: 200px;
+    height 200px;
 }
 
 .description {
