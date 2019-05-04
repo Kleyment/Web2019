@@ -26,39 +26,38 @@
 			<h1 class="text-center">Produits</h1>
 			<div class="mb-4" id="list">
 			<% 
-if (!(request.getAttribute("products") == null)){
-	ResultSet rs = (ResultSet)request.getAttribute("products");
-	while(rs.next()){
-        out.println("<div class=\"produit\">");
-        out.println("<div class=\"row nomproduit\">");
-          out.println("<div class=\"col\"><strong>"+rs.getString(2)+"</strong></div>");
-        out.println("</div>");
-        out.println("<div class=\"row\">");
-          out.println("<div class=\"image col-sm-3\">");
-          	%>
-          	<img src="${pageContext.request.contextPath}/images/" <%=rs.getString(2)) %> class="image" alt="Meme guy">
-          	<%
-          out.println("</div>");
-          out.println("<div class=\"description col-sm-5\">");
-            out.println("Description du produit");
-            out.println("<p>");
-              out.println("(Eventuellement date d'ajout au catalogue)");
-            out.println("</p>");
-            out.println("<p>");
-              out.println("Le produit trucmuche permet de trucmucher de la meilleur qualité");
-            out.println("</p>");
-          out.println("</div>");
-          out.println("<div class=\"col-sm-4 zone-prix\">");
-            out.println("<div class=\"prix\">Prix 5 €</div>");
-            out.println("<a id=\"btn-panier\" class=\"btn btn-primary float-right btn-lg\" onclick=\"addToCart(1);\" role=\"button\">");
-            out.println("<span class=\"glyphicon glyphicon-shopping-cart\"> Ajouter au panier</span></a>");
-          out.println("</div>");
-        out.println("</div>");
-      out.println("</div>");
-	//}
-//}
-%>
-
+			if (!(request.getAttribute("products") == null)){
+				ResultSet rs = (ResultSet)request.getAttribute("products");
+				while(rs.next()){
+			        out.println("<div class=\"produit\">");
+			        out.println("<div class=\"row nomproduit\">");
+			          out.println("<div class=\"col\"><strong>"+rs.getString(2)+"</strong></div>");
+			        out.println("</div>");
+			        out.println("<div class=\"row\">");
+			          out.println("<div class=\"image col-sm-3\">");
+			          	%>
+			          	<img src="${pageContext.request.contextPath}/images/<%=rs.getString(4)%>"class="image" alt="Meme guy">
+			          	<%
+			          out.println("</div>");
+			          out.println("<div class=\"description col-sm-5\">");
+			            out.println("Description du produit");
+			            out.println("<p>");
+			              out.println("(Eventuellement date d'ajout au catalogue)");
+			            out.println("</p>");
+			            out.println("<p>");
+			              out.println("Le produit trucmuche permet de trucmucher de la meilleur qualité");
+			            out.println("</p>");
+			          out.println("</div>");
+			          out.println("<div class=\"col-sm-4 zone-prix\">");
+			            out.println("<div class=\"prix\">Prix "+rs.getInt(3)+" €</div>");
+			            out.println("<a id=\"btn-panier\" class=\"btn btn-primary float-right btn-lg\" onclick=\"addToCart("+rs.getInt(1)+");\" role=\"button\">");
+			            out.println("<span class=\"glyphicon glyphicon-shopping-cart\"> Ajouter au panier</span></a>");
+			          out.println("</div>");
+			        out.println("</div>");
+			      out.println("</div>");
+				}
+			}
+			%>
 			</div>
 		</div>
 	</div>
