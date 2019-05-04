@@ -58,7 +58,9 @@ public class LoginServlet extends HttpServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
 					rd.forward(request, response);
 				} else {
-					RequestDispatcher rd = request.getRequestDispatcher("ProductServlet");
+					int idUser = rs.getInt(1);
+					request.setAttribute("idUser", idUser);
+					RequestDispatcher rd = request.getRequestDispatcher("UserPanel.jsp");
 					rd.forward(request, response);
 				}
 				
