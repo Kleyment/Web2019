@@ -15,7 +15,7 @@
 		<div class="navbar" id="navbar">
 		<ul class="navbar-nav">
 			<li class="nav-item items">
-				<a class="nav-link faux-lien">Bienvenue Jean-Patrick</a>
+				<a class="nav-link faux-lien">Bienvenue <% out.print(request.getAttribute("pseudoUser")); %></a>
 			</li>
 			<li class="nav-item items">
 				<a class="nav-link" href="./Panier.jsp">Votre panier</a>
@@ -36,7 +36,7 @@
 			        out.println("<div class=\"row\">");
 			          out.println("<div class=\"image col-sm-3\">");
 			          	%>
-			          	<img src="${pageContext.request.contextPath}/images/<%=rs.getString(4)%>"class="image-user" alt="Meme guy">
+			          	<img src="${pageContext.request.contextPath}/images/<%=rs.getString(4)%>"class="image-user" alt="<%=rs.getString(2)%>">
 			          	<%
 			          out.println("</div>");
 			          out.println("<div class=\"description col-sm-5\">");

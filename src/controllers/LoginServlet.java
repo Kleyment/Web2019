@@ -59,8 +59,10 @@ public class LoginServlet extends HttpServlet {
 					rd.forward(request, response);
 				} else {
 					int idUser = rs.getInt(1);
+					String pseudoUser = rs.getString(2);
 					ResultSet rsProducts = productsDAO.getProducts();
 					request.setAttribute("idUser", idUser);
+					request.setAttribute("pseudoUser", pseudoUser);
 					request.setAttribute("products", rsProducts);
 					RequestDispatcher rd = request.getRequestDispatcher("UserPanel.jsp");
 					rd.forward(request, response);
