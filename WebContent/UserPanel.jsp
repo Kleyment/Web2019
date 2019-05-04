@@ -18,7 +18,7 @@
 				<a class="nav-link faux-lien">Bienvenue <% out.print(request.getAttribute("pseudoUser")); %></a>
 			</li>
 			<li class="nav-item items">
-				<a class="nav-link" href="./Panier.jsp">Votre panier</a>
+				<a class="nav-link" href="${pageContext.request.contextPath}/Panier.jsp">Votre panier</a>
 			</li>
 		</ul>
 	    </div>

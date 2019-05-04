@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +43,15 @@ public class AddToCartServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			System.out.println(id);
 		}
+		
+		String hashCartOfUser="";
+		Cookie[] listCookies=request.getCookies();
+		for (int i=0;i<listCookies.length;i++) {
+			if (listCookies[i].getName().equals("hashcart")) {
+				hashCartOfUser=listCookies[i].getValue();
+			}
+		}
+		System.out.print("hashcart="+hashCartOfUser);
 	}
 
 	/**
