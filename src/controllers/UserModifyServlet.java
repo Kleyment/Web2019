@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -73,6 +74,9 @@ public class UserModifyServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
 				rd.forward(request, response);
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

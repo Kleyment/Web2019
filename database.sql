@@ -1,5 +1,4 @@
-DROP DATABASE peucher;
-CREATE DATABASE peucher;
+CREATE OR REPLACE DATABASE peucher;
 USE peucher;
 
 CREATE OR REPLACE TABLE products (
@@ -16,6 +15,7 @@ CREATE OR REPLACE TABLE users (
   password varchar(45) NOT NULL,
   role varchar(45) NOT NULL,
   hashcart varchar(45) DEFAULT NULL,
+  salt varchar(45) DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
