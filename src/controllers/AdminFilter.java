@@ -18,7 +18,7 @@ import dao.UsersDAO;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter("/AdminPanel")
+@WebFilter("/AdminPanel.jsp")
 public class AdminFilter implements Filter {
 
 	private UsersDAO usersDAO;
