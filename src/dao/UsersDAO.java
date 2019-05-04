@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.Random;
 
 public class UsersDAO {
@@ -34,8 +35,11 @@ private Connection co;
 			hash = digest.digest(hash);
 		}
 		
-		stmt.setString(4, hash.toString());
-		stmt.setString(5, salt.toString());
+		String saltString = Base64.getEncoder().encodeToString(salt);
+		String hashString = Base64.getEncoder().encodeToString(hash);
+		
+		stmt.setString(4, hashString);
+		stmt.setString(5, saltString);
 		stmt.executeUpdate();
 	}
 	
@@ -74,7 +78,9 @@ private Connection co;
 			hash = digest.digest(hash);
 		}
 		
-		stmt.setString(4, hash.toString());
+		String hashString = Base64.getEncoder().encodeToString(hash);
+		
+		stmt.setString(4, hashString);
 		stmt.setInt(5, id);
 		stmt.executeUpdate();
 	}
