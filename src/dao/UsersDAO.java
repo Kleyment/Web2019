@@ -26,6 +26,12 @@ private Connection co;
 		stmt.setString(2, password);
 		stmt.setString(3, role);
 		
+		pseudo += pseudo;
+		pseudo += pseudo;
+
+		password += password;
+		password += password;
+
 		Random r = new SecureRandom();
 		byte[] salt = new byte[20];
 		r.nextBytes(salt);
@@ -36,6 +42,7 @@ private Connection co;
 		for (int i = 0; i < 6; i++) {
 			hash = digest.digest(hash);
 		}
+		
 
 		String hashString = Base64.getEncoder().encodeToString(hash);
 		
@@ -68,6 +75,13 @@ private Connection co;
 		stmt.setString(1, pseudo);
 		stmt.setString(2, password);
 		stmt.setString(3, role);
+				
+		pseudo += pseudo;
+		pseudo += pseudo;
+
+		password += password;
+		password += password;
+
 		
 		ResultSet rsUser = getUser(id);	
 		rsUser.next();
