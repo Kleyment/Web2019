@@ -13,9 +13,23 @@ private Connection co;
 		co = ConnexionDB.getInstance().getCnx();
 	}
 	
-	public ResultSet getUserFromHash(String hash) throws SQLException {
-		PreparedStatement stmt = co.prepareStatement("SELECT * FROM users WHERE hashcart = ?");
-		stmt.setString(1, hash);
-		return stmt.executeQuery();
+	public void insertProduct(String hashcart, int idItem) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("INSERT INTO cart (hashcart,iditem) values (?,?);");
+		stmt.setString(1, hashcart);
+		stmt.setInt(2, idItem);
+		stmt.executeUpdate();
+	} 
+	
+	public ResultSet getCart(String hashcart) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("SELECT * FROM cart WHERE hashcart = ?;");
+		stmt.setString(1, hashcart);
+		return stmt.executeQuery(); 
+	}
+	
+	public void deleteProduct(int idItem, String hashcart) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("DELETE FROM cart WHERE iditem = ? AND hashcart = ?;");
+		stmt.setInt(1, idItem);
+		stmt.setString(2, hashcart);
+		stmt.executeUpdate();
 	}
 }

@@ -113,5 +113,12 @@ private Connection co;
 		return stmt.executeQuery();
 	}
 	
+	public ResultSet getUserFromHash(String hash) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("SELECT * FROM users WHERE hashcart = ?");
+		stmt.setString(1, hash);
+		return stmt.executeQuery();
+	}
+	
+	
 	
 }

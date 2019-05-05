@@ -27,7 +27,7 @@
 	        <div class="collapse navbar-collapse header-collapse">
 	          <ul class="nav navbar-nav">
 	          	<span><a class="nav-link faux-lien">Bienvenue <% out.print(request.getAttribute("pseudoUser")); %></a></span>
-                <span class="nav-link liste-item"><a href="${pageContext.request.contextPath}/Panier.jsp">Panier</a></span>
+                <span class="nav-link liste-item"><a href="${pageContext.request.contextPath}/CartServlet">Panier</a></span>
                 <span class="nav-link liste-item"><a href="${pageContext.request.contextPath}/DeconnectServlet">Se déconnecter</a></span>
 	          </ul>
 			</div>

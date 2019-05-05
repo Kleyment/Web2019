@@ -1,10 +1,8 @@
 package controllers;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -12,21 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ProductsDAO;
-import dao.UsersDAO;
+import dao.CartDAO;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class DeleteFromCartServlet
  */
-@WebServlet("/DeconnectServlet")
-public class DeconnectServlet extends HttpServlet {
+@WebServlet("/DeleteFromCartServlet")
+public class DeleteFromCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private CartDAO cartDAO;
+    private int id;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeconnectServlet() {
+    public DeleteFromCartServlet() {
         super();
+        cartDAO = new CartDAO();
         // TODO Auto-generated constructor stub
     }
 
@@ -34,10 +33,24 @@ public class DeconnectServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie c = new Cookie("hashcart",null);
-		response.addCookie(c);
-		RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-		rd.forward(request, response);
+		// TODO Auto-generated method stub
+		if ((request.getParameter("id") != null)) {
+			id = Integer.parseInt(request.getParameter("id"));
+		}
+		
+		String hashCartOfUser="";
+		Cookie[] listCookies=request.getCookies();
+		for (int i=0;i<listCookies.length;i++) {
+			if (listCookies[i].getName().equals("hashcart")) {
+				hashCartOfUser=listCookies[i].getValue();
+			}
+		}
+		try {
+			cartDAO.deleteProduct(id, hashCartOfUser);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -45,6 +58,7 @@ public class DeconnectServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
