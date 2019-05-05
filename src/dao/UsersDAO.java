@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.Base64;
 import java.util.Random;
 
+import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
+
 public class UsersDAO {
 
 private Connection co;
@@ -36,15 +38,18 @@ private Connection co;
 		byte[] salt = new byte[20];
 		r.nextBytes(salt);
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
-		String saltString = Base64.getEncoder().encodeToString(salt);
-		byte[] bytes = Base64.getDecoder().decode(pseudo + password + saltString);
-		byte[] hash = digest.digest(bytes);
+		
+		String saltString=(new HexBinaryAdapter().marshal(salt)).toString();
+		//String saltString = Base64.getEncoder().encodeToString(salt);
+		//byte[] bytes = Base64.getDecoder().decode(pseudo + password + saltString);
+
+		byte[] hash = digest.digest(new String(pseudo + password + saltString).getBytes("UTF-8"));
 		for (int i = 0; i < 6; i++) {
 			hash = digest.digest(hash);
 		}
 		
-
-		String hashString = Base64.getEncoder().encodeToString(hash);
+		String hashString=(new HexBinaryAdapter().marshal(hash)).toString();
+		//String hashString = Base64.getEncoder().encodeToString(hash);
 		
 		stmt.setString(4, hashString);
 		stmt.setString(5, saltString);
@@ -87,13 +92,16 @@ private Connection co;
 		rsUser.next();
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
 		String saltString = rsUser.getString(6);
-		byte[] bytes = Base64.getDecoder().decode(pseudo + password + saltString);
-		byte[] hash = digest.digest(bytes);
+		byte[] hash = digest.digest(new String(pseudo + password + saltString).getBytes("UTF-8"));
+		//byte[] bytes = Base64.getDecoder().decode(pseudo + password + saltString);
+		//byte[] hash = digest.digest(bytes);
 		for (int i = 0; i < 6; i++) {
 			hash = digest.digest(hash);
 		}
 		
-		String hashString = Base64.getEncoder().encodeToString(hash);
+		//String hashString=digest.toString();
+		String hashString=(new HexBinaryAdapter().marshal(hash)).toString();
+		//String hashString = Base64.getEncoder().encodeToString(hash);
 		
 		stmt.setString(4, hashString);
 		stmt.setInt(5, id);
