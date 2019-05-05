@@ -33,7 +33,7 @@ if (!(request.getAttribute("user") == null)){
 				          	<div class="form-group">
 					            <label for="password" class="col-lg-2 control-label">Mot de passe</label>
 					            <div class="col-lg-10">
-				              	<input type = "password" class="form-control" id = "password" name = "password" value="<% out.println(rs.getString(3)); %> " size = "20" placeholder="Mot de Passe"/>
+				              	<input type = "password" class="form-control" id = "password" name = "password" value="<% out.println(rs.getString(3)); %>" size = "20" placeholder="Mot de Passe"/>
 				            </div>
 				          </div>
 				          <div class="form-group">

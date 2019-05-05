@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,7 +20,7 @@ private Connection co;
 		co = ConnexionDB.getInstance().getCnx();
 	}
 	
-	public void insertUser(String pseudo, String password, String role) throws SQLException, NoSuchAlgorithmException {
+	public void insertUser(String pseudo, String password, String role) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
 		PreparedStatement stmt = co.prepareStatement("INSERT INTO users (pseudo,password,role,hashcart,salt) values (?,?,?,?,?);");
 		stmt.setString(1, pseudo);
 		stmt.setString(2, password);
@@ -29,13 +30,13 @@ private Connection co;
 		byte[] salt = new byte[20];
 		r.nextBytes(salt);
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
-		digest.update(salt);
-		byte[] hash = digest.digest((pseudo + password).getBytes(StandardCharsets.UTF_8));
+		String saltString = Base64.getEncoder().encodeToString(salt);
+		byte[] bytes = Base64.getDecoder().decode(pseudo + password + saltString);
+		byte[] hash = digest.digest(bytes);
 		for (int i = 0; i < 6; i++) {
 			hash = digest.digest(hash);
 		}
-		
-		String saltString = Base64.getEncoder().encodeToString(salt);
+
 		String hashString = Base64.getEncoder().encodeToString(hash);
 		
 		stmt.setString(4, hashString);
@@ -62,7 +63,7 @@ private Connection co;
 		stmt.executeUpdate();
 	}
 	
-	public void modifyUser(int id, String pseudo, String password, String role) throws SQLException, NoSuchAlgorithmException {
+	public void modifyUser(int id, String pseudo, String password, String role) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
 		PreparedStatement stmt = co.prepareStatement("UPDATE users SET pseudo = ?, password = ?, role = ?, hashcart = ? WHERE id = ?");
 		stmt.setString(1, pseudo);
 		stmt.setString(2, password);
@@ -70,10 +71,10 @@ private Connection co;
 		
 		ResultSet rsUser = getUser(id);	
 		rsUser.next();
-		byte[] salt = rsUser.getString(5).getBytes();
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
-		digest.update(salt);
-		byte[] hash = digest.digest((pseudo + password).getBytes(StandardCharsets.UTF_8));
+		String saltString = rsUser.getString(6);
+		byte[] bytes = Base64.getDecoder().decode(pseudo + password + saltString);
+		byte[] hash = digest.digest(bytes);
 		for (int i = 0; i < 6; i++) {
 			hash = digest.digest(hash);
 		}
