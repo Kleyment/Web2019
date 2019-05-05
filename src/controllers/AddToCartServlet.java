@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CartDAO;
 import dao.ProductsDAO;
 import dao.UsersDAO;
 
@@ -21,8 +22,7 @@ import dao.UsersDAO;
 @WebServlet("/AddToCartServlet")
 public class AddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private UsersDAO usersDAO; 
-    private ProductsDAO productsDAO;
+    private CartDAO cartDAO;
     private int id;
 	
     /**
@@ -30,18 +30,15 @@ public class AddToCartServlet extends HttpServlet {
      */
     public AddToCartServlet() {
         super();
-        usersDAO = new UsersDAO();
-        productsDAO = new ProductsDAO();
+        cartDAO = new CartDAO();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("OK");
 		if ((request.getParameter("id") != null)) {
 			id = Integer.parseInt(request.getParameter("id"));
-			System.out.println(id);
 		}
 		
 		String hashCartOfUser="";
@@ -51,7 +48,12 @@ public class AddToCartServlet extends HttpServlet {
 				hashCartOfUser=listCookies[i].getValue();
 			}
 		}
-		System.out.print("hashcart="+hashCartOfUser);
+		try {
+			cartDAO.insertProduct(hashCartOfUser, id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

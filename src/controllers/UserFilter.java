@@ -26,7 +26,6 @@ import dao.UsersDAO;
 public class UserFilter implements Filter {
 
 	private UsersDAO usersDAO;
-	private CartDAO cartDAO;
 	private ProductsDAO productsDAO;
 	
     /**
@@ -34,7 +33,6 @@ public class UserFilter implements Filter {
      */
     public UserFilter() {
         usersDAO = new UsersDAO();
-        cartDAO = new CartDAO();
         productsDAO = new ProductsDAO();
     }
 
@@ -57,7 +55,6 @@ public class UserFilter implements Filter {
 			for (int i=0;i<listCookies.length;i++) {
 				if (listCookies[i].getName().equals("hashcart")) {
 					hashCartOfUser=listCookies[i].getValue();
-					System.out.println("hash trouvé : "+hashCartOfUser);
 				}
 			}
 		}
@@ -68,7 +65,7 @@ public class UserFilter implements Filter {
 		} else {
 			ResultSet rs;
 			try {
-				rs=cartDAO.getUserFromHash(hashCartOfUser);
+				rs=usersDAO.getUserFromHash(hashCartOfUser);
 				if(rs != null && rs.next()) {
 					if (rs.getString(4).contentEquals("admin")) {
 						ResultSet rsUsers = usersDAO.getUsers();
