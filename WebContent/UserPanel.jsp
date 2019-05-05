@@ -12,7 +12,28 @@
 <body>
 <div class="containerforcontainer">
 	<div class="container">
-		<div class="navbar" id="navbar">
+		<div class="navbar navbar-default navbar-static-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".header-collapse">
+	            <span class="sr-only"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a id="catalogue" class="navbar-brand" href="#">Catalogue</a>
+	        </div>
+	        
+	        <div class="collapse navbar-collapse header-collapse">
+	          <ul class="nav navbar-nav">
+	          	<span><a class="nav-link faux-lien">Bienvenue <% out.print(request.getAttribute("pseudoUser")); %></a></span>
+                <span class="nav-link liste-item"><a href="${pageContext.request.contextPath}/Panier.jsp">Panier</a></span>
+                <span class="nav-link liste-item"><a href="${pageContext.request.contextPath}/DeconnectServlet">Se déconnecter</a></span>
+	          </ul>
+			</div>
+	      </div>
+		</div>
+		<!--<div class="navbar" id="navbar">
 		<ul class="navbar-nav">
 			<li class="nav-item items">
 				<a class="nav-link faux-lien">Bienvenue <% out.print(request.getAttribute("pseudoUser")); %></a>
@@ -20,8 +41,7 @@
 			<li class="nav-item items">
 				<a class="nav-link" href="${pageContext.request.contextPath}/Panier.jsp">Votre panier</a>
 			</li>
-		</ul>
-	    </div>
+		</ul> -->
 		<div class="row">
 			<h1 class="text-center">Produits</h1>
 			<div class="mb-4" id="list">

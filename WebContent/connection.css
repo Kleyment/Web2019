@@ -2,16 +2,42 @@
     margin-top: 15px;
 }
 
+.deconnecter {
+    margin-left: 200px;
+    position: right;
+    text-align: right;
+}
+
 .style-bouton {
     font-family: Raleway, Helvetica, Arial, sans-serif;
 }
 
 .faux-lien:hover {
     text-decoration: none;
+    cursor: default;
 }
 
-.navbar-nav {
-   display: contents;
+.faux-lien {
+    margin-right: 3 0%;
+}
+
+.liste-item {
+    padding-left: 50px;
+    word-break: normal;
+}
+
+a.navbar-brand {
+    font-size: 30px;
+    margin-right: 100px;
+}
+
+#catalogue:hover {
+	text-decoration: none;
+    cursor: default;
+}
+
+ul.navbar-nav {
+    font-size: 25px;
 }
 
 .items {
