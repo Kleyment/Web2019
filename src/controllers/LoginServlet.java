@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,6 +51,8 @@ public class LoginServlet extends HttpServlet {
 		try {
 			ResultSet rs = usersDAO.getUser(pseudo, password);
 			if(rs.next()) {
+				Cookie c = new Cookie("hashcart",rs.getString(5));
+				response.addCookie(c);
 				if (rs.getString(4).contentEquals("admin")) {
 					ResultSet rsUsers = usersDAO.getUsers();
 					ResultSet rsProducts = productsDAO.getProducts();

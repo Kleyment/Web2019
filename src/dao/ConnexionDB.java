@@ -15,9 +15,6 @@ public class ConnexionDB {
 		try {
 			Properties p = new Properties();
 			p.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("confDB.properties"));
-			
-			
-				
 			// chargement du driver
 			Class.forName(p.getProperty("driver"));
 			cnx = DriverManager.getConnection(p.getProperty("url"),

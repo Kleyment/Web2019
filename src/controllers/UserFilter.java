@@ -15,23 +15,27 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import dao.CartDAO;
+import dao.ProductsDAO;
 import dao.UsersDAO;
 
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter("/44Login.jsp")
+@WebFilter("/Login.jsp")
 public class UserFilter implements Filter {
 
 	private UsersDAO usersDAO;
-	//private CartDAO cartDAO;
+	private CartDAO cartDAO;
+	private ProductsDAO productsDAO;
 	
     /**
      * Default constructor. 
      */
     public UserFilter() {
         usersDAO = new UsersDAO();
-        //cartDAO = new CartDAO();
+        cartDAO = new CartDAO();
+        productsDAO = new ProductsDAO();
     }
 
 	/**
@@ -49,9 +53,12 @@ public class UserFilter implements Filter {
 		String hashCartOfUser=null;
 		Cookie[] listCookies=((HttpServletRequest)(request)).getCookies();
 		
-		for (int i=0;i<listCookies.length;i++) {
-			if (listCookies[i].getName().equals("hashcart")) {
-				hashCartOfUser=listCookies[i].getValue();
+		if (listCookies != null) {
+			for (int i=0;i<listCookies.length;i++) {
+				if (listCookies[i].getName().equals("hashcart")) {
+					hashCartOfUser=listCookies[i].getValue();
+					System.out.println("hash trouvé : "+hashCartOfUser);
+				}
 			}
 		}
 		
@@ -59,46 +66,31 @@ public class UserFilter implements Filter {
 			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 			rd.forward(request, response);
 		} else {
-			
-			ResultSet rs;
-			//try {
-				/*cartDAO.getUserFromHash(hashCartOfUser);
-				if(rs.next()) {
-					if (rs.getString(4).contentEquals("admin")) {
-						request.setAttribute("users", rs);
-						RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
-						rd.forward(request, response);
-					}
-				}*/
-			//} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
-			//}
-				
-			}
-		
-		
-		String pseudo = request.getParameter("pseudo");
-		String password = request.getParameter("mdp");
-		if (!(pseudo == null && password == null)){
 			ResultSet rs;
 			try {
-				rs = usersDAO.getUser(pseudo, password);
-				if(rs.next()) {
+				rs=cartDAO.getUserFromHash(hashCartOfUser);
+				if(rs != null && rs.next()) {
 					if (rs.getString(4).contentEquals("admin")) {
-						request.setAttribute("users", rs);
+						ResultSet rsUsers = usersDAO.getUsers();
+						ResultSet rsProducts = productsDAO.getProducts();
+						request.setAttribute("users", rsUsers);
+						request.setAttribute("products", rsProducts);
 						RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
+						rd.forward(request, response);
+					} else {
+						int idUser = rs.getInt(1);
+						String pseudoUser = rs.getString(2);
+						ResultSet rsProducts = productsDAO.getProducts();
+						request.setAttribute("idUser", idUser);
+						request.setAttribute("pseudoUser", pseudoUser);
+						request.setAttribute("products", rsProducts);
+						RequestDispatcher rd = request.getRequestDispatcher("UserPanel.jsp");
 						rd.forward(request, response);
 					}
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-			rd.forward(request, response);
 		}
 		chain.doFilter(request, response);
 	}

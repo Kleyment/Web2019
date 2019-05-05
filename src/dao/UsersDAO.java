@@ -70,7 +70,7 @@ private Connection co;
 		
 		ResultSet rsUser = getUser(id);	
 		rsUser.next();
-		byte[] salt = rsUser.getString(5).getBytes();
+		byte[] salt = rsUser.getString(6).getBytes();
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
 		digest.update(salt);
 		byte[] hash = digest.digest((pseudo + password).getBytes(StandardCharsets.UTF_8));
