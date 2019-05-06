@@ -13,11 +13,16 @@ private Connection co;
 		co = ConnexionDB.getInstance().getCnx();
 	}
 	
-	public void insertProduct(String hashcart, int idItem) throws SQLException {
-		PreparedStatement stmt = co.prepareStatement("INSERT INTO cart (hashcart,iditem) values (?,?);");
-		stmt.setString(1, hashcart);
-		stmt.setInt(2, idItem);
-		stmt.executeUpdate();
+	public void insertProduct(String hashcart, int idItem) {
+		try {
+			PreparedStatement stmt = co.prepareStatement("INSERT INTO cart (hashcart,iditem) values (?,?);");
+			stmt.setString(1, hashcart);
+			stmt.setInt(2, idItem);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			//Dans ce cas le produit est déjà ajouté dans la base
+		}
+		
 	} 
 	
 	public ResultSet getCart(String hashcart) throws SQLException {

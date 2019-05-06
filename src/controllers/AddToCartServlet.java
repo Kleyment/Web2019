@@ -48,20 +48,15 @@ public class AddToCartServlet extends HttpServlet {
 				hashCartOfUser=listCookies[i].getValue();
 			}
 		}
-		try {
-			cartDAO.insertProduct(hashCartOfUser, id);
-			
-			String json= " {\n" + 
-		    		"        \"id\": "+id+",\n" + 
-		    		"        \"action\": \"add\"\n" + 
-		    		"    }";
-		    response.setContentType("application/json");
-		    response.setCharacterEncoding("UTF-8");
-		    response.getWriter().write(json);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		cartDAO.insertProduct(hashCartOfUser, id);
+		
+		String json= " {\n" + 
+	    		"        \"id\": "+id+",\n" + 
+	    		"        \"action\": \"add\"\n" + 
+	    		"    }";
+	    response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+	    response.getWriter().write(json);
 	}
 
 	/**
