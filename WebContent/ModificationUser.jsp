@@ -50,7 +50,7 @@ if (!(request.getAttribute("user") == null)){
 						   		</div>
 							</div>
 		        		</form>
-		        		<button id="cancel" class="btn btn-default" onclick="location.href='Login.jsp'">Annuler</button>
+		        		<button id="cancel" class="btn btn-danger" onclick="location.href='Login.jsp'">Annuler</button>
 					</div>
 			</div>
 		</div>
