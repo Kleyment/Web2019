@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">	
 <title>Interface client</title>
 </head>
-<body>
+<body onload="main();">
 <div class="containerforcontainer">
 	<div class="container">
 		<div class="navbar navbar-default navbar-static-top">
@@ -59,7 +59,7 @@
 			              out.println("(Eventuellement date d'ajout au catalogue)");
 			            out.println("</p>");
 			            out.println("<p>");
-			              out.println("Le produit trucmuche permet de trucmucher de la meilleur qualité");
+			              out.println(/*rs.getString(5)*/);
 			            out.println("</p>");
 			          out.println("</div>");
 			          out.println("<div class=\"col-sm-3 zone-prix\">");
