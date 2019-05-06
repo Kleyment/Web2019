@@ -34,8 +34,8 @@ CREATE OR REPLACE TABLE cart (
 
 INSERT INTO products (name, price, image, description) VALUES ("Razer Naga",80.0,"razer_naga.jpg", " Retro-Eclairage RGB Souris Gaming Mouse MMO Ergonomique, 19 Boutons Programmables & 16.000 dpi");
 INSERT INTO products (name, price, image, description) VALUES ("LDLC Fox Meca Red",99.95,"ldlc_fox_meca_red.jpg", "Le Fox Meca Red par LDLC se destine aux gamers qui souhaitent un clavier mécanique rétroéclairé RGB avec des switches Cherry MX RED linéaires et réactifs et disposant de nombreux atouts pour accéder à la victoire. Macros à la volée, anti-ghosting intégral, Polling Rate à 1000 Hz, rien ne manque !");
-INSERT INTO products (name, price, image) VALUES ("test3",1.0,"ldlc_fox_meca_red.jpg");
-INSERT INTO products (name, price, image) VALUES ("test4",2.0,"ldlc_fox_meca_red.jpg");
+INSERT INTO products (name, price, image, description) VALUES ("Corsair K70 LUX RGB",126.01,"corsair_k70.jpg", "Clavier Mécanique Gaming (Cherry MX Brown: Tactile et silencieux, Rétro-Éclairage RGB Multicolore, AZERTY FR Layout) - Noir");
+INSERT INTO products (name, price, image, description) VALUES ("Logitech G633",103.99, "logitech_g633.jpg", "Logitech, casque gaming G633 Artemis Spectrum Pro filaire, son surround Dolby 7.1 pour PC Xbox One PS4, microphone à réduction de bruit entièrement personnalisable, LIGHTSYNC RVB, Noir");
 INSERT INTO cart (hashcart, iditem) VALUES ("AD9C625B1857E2CB0F7F04BCA9134BFD371C5D02CF29E97C99346127C144FF38",3);
 INSERT INTO cart (hashcart, iditem) VALUES ("AD9C625B1857E2CB0F7F04BCA9134BFD371C5D02CF29E97C99346127C144FF38",4);
 INSERT INTO users (pseudo, password, role, hashcart, salt) values ("admin", "admin", "admin", "434960816100FA9749AC6F4BB8AF8F580AC24E1F1C78B0DDB72978E5CDFBF792", "88C179D58E4AEE0596056BB73BE32834952FD53F");
