@@ -46,6 +46,8 @@ public class UserModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		// TODO Auto-generated method stub
 		if (!(request.getParameter("modif") == null)) {
 			id = Integer.parseInt(request.getParameter("id"));
@@ -64,6 +66,8 @@ public class UserModifyServlet extends HttpServlet {
 			String pseudo = request.getParameter("pseudo");
 			String password = request.getParameter("password");
 			String role = request.getParameter("role");
+			System.out.print("pseudo : "+pseudo);
+			System.out.print("password : "+password);
 			ResultSet rsUser;
 			try {
 				usersDAO.modifyUser(id, pseudo, password, role);

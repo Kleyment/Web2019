@@ -15,19 +15,13 @@
 		<div class="navbar navbar-default navbar-static-top">
 	      <div class="container">
 	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".header-collapse">
-	            <span class="sr-only"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
 	          <a id="catalogue" class="navbar-brand" href="#">Catalogue</a>
 	        </div>
 	        
-	        <div class="collapse navbar-collapse header-collapse">
+	        <div class="navbar-collapse header-collapse">
 	          <ul class="nav navbar-nav">
-	          	<span><a class="nav-link faux-lien">Bienvenue <% out.print(request.getAttribute("pseudoUser")); %></a></span>
-                <span class="nav-link liste-item"><a href="${pageContext.request.contextPath}/CartServlet">Panier</a></span>
+	          	<span><a class="nav-link faux-lien padding-right">Bienvenue <% out.print(request.getAttribute("pseudoUser")); %></a></span>
+                <span class="nav-link liste-item padding-right"><a href="${pageContext.request.contextPath}/CartServlet">Panier</a></span>
                 <span class="nav-link liste-item"><a href="${pageContext.request.contextPath}/DeconnectServlet">Se déconnecter</a></span>
 	          </ul>
 			</div>

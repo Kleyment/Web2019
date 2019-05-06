@@ -1,4 +1,7 @@
-CREATE OR REPLACE DATABASE peucher;
+DROP DATABASE peucher;
+CREATE OR REPLACE DATABASE peucher
+  CHARACTER SET = 'utf8mb4'
+  COLLATE = 'utf8mb4_unicode_ci';
 USE peucher;
 
 CREATE OR REPLACE TABLE products (

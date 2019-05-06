@@ -46,6 +46,8 @@ public class UserInsertServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		String pseudo = request.getParameter("pseudo");
 		String password = request.getParameter("password");
 		String role = request.getParameter("role");

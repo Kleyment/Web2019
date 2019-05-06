@@ -22,8 +22,13 @@
 }
 
 .liste-item {
-    padding-left: 50px;
+    text-align: left;
+    display: inline-block;
     word-break: normal;
+}
+
+.padding-right {
+    padding-right: 50px;
 }
 
 a.navbar-brand {
