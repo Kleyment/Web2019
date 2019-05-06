@@ -115,6 +115,12 @@ private Connection co;
 		return stmt.executeQuery();
 	}
 	
+	public ResultSet getUser(String pseudo) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("SELECT * FROM users WHERE pseudo = ?");
+		stmt.setString(1, pseudo);
+		return stmt.executeQuery();
+	}
+	
 	public ResultSet getUser(int id) throws SQLException {
 		PreparedStatement stmt = co.prepareStatement("SELECT * FROM users WHERE id = ?");
 		stmt.setInt(1, id);

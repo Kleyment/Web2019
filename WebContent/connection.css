@@ -2,6 +2,15 @@
     margin-top: 15px;
 }
 
+#cancel {
+    margin-top: 15px;
+    margin-left: 50%;
+}
+
+#error {
+	color : red;
+}
+
 .deconnecter {
     margin-left: 20px;
     float: right;

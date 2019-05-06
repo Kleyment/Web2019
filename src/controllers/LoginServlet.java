@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
 				if (rs.getString(4).contentEquals("admin")) {
 					ResultSet rsUsers = usersDAO.getUsers();
 					ResultSet rsProducts = productsDAO.getProducts();
+					request.setAttribute("error", "false");
 					request.setAttribute("users", rsUsers);
 					request.setAttribute("products", rsProducts);
 					RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");

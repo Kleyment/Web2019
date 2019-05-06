@@ -52,7 +52,13 @@ public class UserInsertServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String role = request.getParameter("role");
 		try {
-			usersDAO.insertUser(pseudo, password, role);
+			ResultSet verif = usersDAO.getUser(pseudo);
+			if (verif.next()) {
+				request.setAttribute("error", "true");
+			} else {
+				request.setAttribute("error", "false");
+				usersDAO.insertUser(pseudo, password, role);
+			}
 			ResultSet rsUser = usersDAO.getUsers();
 			ResultSet rsProduct = productsDAO.getProducts();
 			request.setAttribute("users", rsUser);

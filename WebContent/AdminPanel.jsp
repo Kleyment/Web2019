@@ -38,7 +38,10 @@
 					            <label for="pseudo" class="col-lg-2 control-label">Pseudo</label>
 					            <div class="col-lg-10">
 					              <input type="text" class="form-control" id="pseudo" name="pseudo" value="" placeholder="Pseudo">
-					            </div>
+					            	<% if (request.getAttribute("error") == "true") {
+					            	out.println("<p id = \"error\">Ce pseudo est déjà pris</p>");
+					          		} %>
+					            </div>		            
 				          	</div>
 				          	<div class="form-group">
 					            <label for="password" class="col-lg-2 control-label">Mot de passe</label>

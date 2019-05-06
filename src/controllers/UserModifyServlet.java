@@ -55,6 +55,7 @@ public class UserModifyServlet extends HttpServlet {
 			try {
 				rs = usersDAO.getUser(id);
 				request.setAttribute("user", rs);
+				request.setAttribute("error", "false");
 				RequestDispatcher rd = request.getRequestDispatcher("ModificationUser.jsp");
 				rd.forward(request, response);
 			} catch (SQLException e) {
@@ -66,17 +67,27 @@ public class UserModifyServlet extends HttpServlet {
 			String pseudo = request.getParameter("pseudo");
 			String password = request.getParameter("password");
 			String role = request.getParameter("role");
-			System.out.print("pseudo : "+pseudo);
-			System.out.print("password : "+password);
 			ResultSet rsUser;
+			ResultSet rs;
 			try {
-				usersDAO.modifyUser(id, pseudo, password, role);
-				rsUser = usersDAO.getUsers();
-				ResultSet rsProduct = productsDAO.getProducts();
-				request.setAttribute("users", rsUser);
-				request.setAttribute("products", rsProduct);
-				RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
-				rd.forward(request, response);
+				ResultSet verif = usersDAO.getUser(pseudo);
+				if (verif.next()) {
+					rs = usersDAO.getUser(id);
+					request.setAttribute("user", rs);
+					request.setAttribute("error", "true");
+					RequestDispatcher rd = request.getRequestDispatcher("ModificationUser.jsp");
+					rd.forward(request, response);
+				} else {
+					request.setAttribute("error", "false");
+					usersDAO.modifyUser(id, pseudo, password, role);
+					rsUser = usersDAO.getUsers();
+					ResultSet rsProduct = productsDAO.getProducts();
+					request.setAttribute("users", rsUser);
+					request.setAttribute("products", rsProduct);
+					RequestDispatcher rd = request.getRequestDispatcher("AdminPanel.jsp");
+					rd.forward(request, response);
+				}
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

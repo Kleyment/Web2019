@@ -28,6 +28,9 @@ if (!(request.getAttribute("user") == null)){
 					            <label for="pseudo" class="col-lg-2 control-label">Pseudo</label>
 					            <div class="col-lg-10">
 			            			<input type = "text" class="form-control" id = "pseudo" name = "pseudo" value = "<% out.println(rs.getString(2)); %>" size = "20" placeholder="Pseudo"/>
+					            	<% if (request.getAttribute("error") == "true") {
+					            	out.println("<p id = \"error\">Ce pseudo est déjà pris</p>");
+					          		} %>
 					            </div>
 				          	</div>
 				          	<div class="form-group">
@@ -44,7 +47,7 @@ if (!(request.getAttribute("user") == null)){
 										<option value="admin"<%if (rs.getString(4).contentEquals("admin")) { out.println("selected=\"selected\"");} %>>Administrateur</option>
 									</select>
 									<button id="submit" type="submit" class="btn btn-default">Modifier</button>
-									<button id="cancel" type="submit" class="btn btn-default" onclick="location.href='Login.jsp'">Annuler</button>
+									<button id="cancel" class="btn btn-default" onclick="location.href='Login.jsp'">Annuler</button>
 						   		</div>
 							</div>
 		        		</form>
