@@ -47,6 +47,7 @@ if (!(request.getAttribute("product") == null)){
 					            <div class="col-lg-10">
 				         		<textarea class="form-control" id = "description" name = "description" placeholder="Description"><% if (!(rs.getString(5) == null)) {out.println(rs.getString(5));} %></textarea>
 				         		<button id="submit" type="submit" class="btn btn-default">Modifier</button>
+				         		<button id="cancel" type="submit" class="btn btn-default" onclick="location.href='Login.jsp'">Annuler</button>
 				            </div>				            
 				          </div>				
 		        		</form>

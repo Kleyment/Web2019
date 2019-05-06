@@ -54,12 +54,10 @@
 			          	<%
 			          out.println("</div>");
 			          out.println("<div class=\"description col-sm-5\">");
-			            out.println("Description du produit");
 			            out.println("<p>");
-			              out.println("(Eventuellement date d'ajout au catalogue)");
-			            out.println("</p>");
-			            out.println("<p>");
-			              out.println("Le produit trucmuche permet de trucmucher de la meilleur qualité");
+			            if (!(rs.getString(5) == null)){
+			    			out.println(rs.getString(5));
+			    		}
 			            out.println("</p>");
 			          out.println("</div>");
 			          out.println("<div class=\"col-sm-3 zone-prix\">");

@@ -32,7 +32,7 @@ CREATE OR REPLACE TABLE cart (
     ON UPDATE CASCADE
 );
 
-INSERT INTO products (name, price, image, description) VALUES ("Razer Naga",80.0,"razer_naga.jpg", " Retro-Éclairage RGB Souris Gaming Mouse MMO Ergonomique, 19 Boutons Programmables & 16.000 dpi");
+INSERT INTO products (name, price, image, description) VALUES ("Razer Naga",80.0,"razer_naga.jpg", " Retro-Eclairage RGB Souris Gaming Mouse MMO Ergonomique, 19 Boutons Programmables & 16.000 dpi");
 INSERT INTO products (name, price, image, description) VALUES ("LDLC Fox Meca Red",99.95,"ldlc_fox_meca_red.jpg", "Le Fox Meca Red par LDLC se destine aux gamers qui souhaitent un clavier mécanique rétroéclairé RGB avec des switches Cherry MX RED linéaires et réactifs et disposant de nombreux atouts pour accéder à la victoire. Macros à la volée, anti-ghosting intégral, Polling Rate à 1000 Hz, rien ne manque !");
 INSERT INTO products (name, price, image) VALUES ("test3",1.0,"ldlc_fox_meca_red.jpg");
 INSERT INTO products (name, price, image) VALUES ("test4",2.0,"ldlc_fox_meca_red.jpg");
