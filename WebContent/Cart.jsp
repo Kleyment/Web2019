@@ -45,14 +45,12 @@
 			          	<%
 			          out.println("</div>");
 			          out.println("<div class=\"description col-sm-5\">");
-			            out.println("Description du produit");
 			            out.println("<p>");
-			              out.println("(Eventuellement date d'ajout au catalogue)");
+			            if (!(rs.getString(5) == null)){
+			    			out.println(rs.getString(5));
+			    		}
 			            out.println("</p>");
-			            out.println("<p>");
-			              out.println(/*rs.getString(5)*/);
-			            out.println("</p>");
-			          out.println("</div>");
+			            out.println("</div>");
 			          out.println("<div class=\"col-sm-3 zone-prix\">");
 			            out.println("<div class=\"prix\">Prix "+rs.getDouble(3)+" €</div>");
 			            out.println("<a id=\"btn-panier\" class=\"btn btn-danger float-right btn-lg style-bouton\" onclick=\"removeFromCart("+rs.getInt(1)+");\" role=\"button\">");
