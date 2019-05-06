@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +48,14 @@ public class DeleteFromCartServlet extends HttpServlet {
 		}
 		try {
 			cartDAO.deleteProduct(id, hashCartOfUser);
+
+		    String json= " {\n" + 
+		    		"        \"id\": "+id+",\n" + 
+		    		"        \"action\": \"delete\"\n" + 
+		    		"    }";
+		    response.setContentType("application/json");
+		    response.setCharacterEncoding("UTF-8");
+		    response.getWriter().write(json);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

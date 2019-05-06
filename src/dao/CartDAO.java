@@ -38,4 +38,11 @@ private Connection co;
 		stmt.setString(1, hashcart);
 		stmt.executeUpdate();
 	}
+	
+	public ResultSet getProductsFromCart(String hashcart) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("SELECT * FROM products WHERE id IN (SELECT iditem FROM cart WHERE hashcart = ?);");
+		stmt.setString(1, hashcart);
+		return stmt.executeQuery();
+	}
+	
 }

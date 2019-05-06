@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">	
 <title>Interface client</title>
 </head>
-<body>
+<body onload="main();">
 <div class="containerforcontainer">
 	<div class="container">
 		<div class="navbar navbar-default navbar-static-top">
