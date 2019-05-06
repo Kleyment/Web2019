@@ -66,8 +66,10 @@ public class UserModifyServlet extends HttpServlet {
 			String pseudo = request.getParameter("pseudo");
 			String password = request.getParameter("password");
 			String role = request.getParameter("role");
-			System.out.print("pseudo : "+pseudo);
-			System.out.print("password : "+password);
+			
+			//Debug
+			//System.out.print("pseudo : "+pseudo);
+			//System.out.print("password : "+password);
 			ResultSet rsUser;
 			try {
 				usersDAO.modifyUser(id, pseudo, password, role);

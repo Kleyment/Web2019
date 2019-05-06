@@ -44,6 +44,7 @@ if (!(request.getAttribute("user") == null)){
 										<option value="admin"<%if (rs.getString(4).contentEquals("admin")) { out.println("selected=\"selected\"");} %>>Administrateur</option>
 									</select>
 									<button id="submit" type="submit" class="btn btn-default">Modifier</button>
+									<button id="cancel" type="submit" class="btn btn-default" onclick="location.href='Login.jsp'">Annuler</button>
 						   		</div>
 							</div>
 		        		</form>
