@@ -98,14 +98,20 @@ if (!(request.getAttribute("users") == null)){
 					            <div class="col-lg-10">
 					              <input type="text" class="form-control" id="price" name="price" value="" placeholder="10.5" >					              
 					            </div>
-				          </div>
-				          <div class="form-group">
+				         	 </div>
+				         	 <div class="form-group">
 					            <label for="image" class="col-lg-2 control-label">Nom de l'image</label>
 					            <div class="col-lg-10">
 					              <input type="text" class="form-control" id="image" name="image" value="" placeholder="Image.jpg">
-					              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
 					            </div>
-				          	</div>
+					          </div>
+					          <div class="form-group">
+						           <label for="description" class="col-lg-2 control-label">Description</label>
+						           <div class="col-lg-10">
+						              <textarea class="form-control" id = "description" name = "description" placeholder="Description"></textarea>
+						              <button id="submit" type="submit" class="btn btn-default">Ajouter</button>
+						           </div>
+					          </div>
 		        		</form>
 					</div>
 				</div>
@@ -114,12 +120,17 @@ if (!(request.getAttribute("users") == null)){
 <% 
 if (!(request.getAttribute("products") == null)){
 	ResultSet rsProducts = (ResultSet)request.getAttribute("products");
-	out.println("<thead><tr><th>ID</th><th>Nom</th><th>Prix</th><th></th><th></th><th></th></tr></thead><tbody>");
+	out.println("<thead><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Description</th><th></th><th></th><th></th></tr></thead><tbody>");
 	while(rsProducts.next()){
 		out.println("<tr>");
 		out.println("<td>"+rsProducts.getInt(1) + "</td>");
 		out.println("<td>"+rsProducts.getString(2) + "</td>");
 		out.println("<td>"+ rsProducts.getDouble(3) + " €</td>");
+		out.println("<td>");
+		if (!(rsProducts.getString(5) == null)){
+			out.println(rsProducts.getString(5));
+		}
+		out.println("</td>");
 		out.println("<td>");
 		if (!(rsProducts.getString(4) == null)){
 			%>

@@ -49,14 +49,31 @@ public class ProductInsertServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		Double price = Double.parseDouble(request.getParameter("price"));
 		String image = null;
+		String description = null;
 		if (!(request.getParameter("image") == null)) {
 			image = request.getParameter("image");
 		}
+		if (!(request.getParameter("description") == null)) {
+			description = request.getParameter("description");
+		}
 		try {
-			if (image != null) {
-				productsDAO.insertProduct(name, price,image);
+			if (image != "") {
+				if (description != "") {
+					productsDAO.insertProductFull(name, price, image, description);
+					System.out.println("full " + image);
+					System.out.println("full " + description);
+				} else {
+					productsDAO.insertProductImage(name, price,image);
+					System.out.println("image " + image);
+				}
 			} else {
-				productsDAO.insertProduct(name, price);
+				if (description != "") {
+					productsDAO.insertProductDescription(name, price, description);
+					System.out.println("description " + description);
+				} else {
+					productsDAO.insertProduct(name, price);
+					System.out.println("Kedal");
+				}
 			}
 			ResultSet rsProducts = productsDAO.getProducts();
 			ResultSet rsUsers = usersDAO.getUsers();

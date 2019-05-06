@@ -64,15 +64,27 @@ public class ProductModifyServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			Double price = Double.parseDouble(request.getParameter("price"));
 			String image = null;
+			String description = null;
 			if (!(request.getParameter("image") == null)) {
 				image = request.getParameter("image");
 			}
+			if (!(request.getParameter("description") == null)) {
+				description = request.getParameter("description");
+			}
 			ResultSet rsProduct;
 			try {
-				if (image != null) {
-					productsDAO.modifyProduct(id, name, price, image);
+				if (image != "") {
+					if (description != "") {
+						productsDAO.modifyProductFull(id, name, price, image, description);
+					} else {
+						productsDAO.modifyProductImage(id, name, price,image);
+					}
 				} else {
-					productsDAO.modifyProduct(id, name, price);
+					if (description != "") {
+						productsDAO.modifyProductDescription(id, name, price, description);
+					} else {
+						productsDAO.modifyProduct(id, name, price);
+					}
 				}
 				rsProduct = productsDAO.getProducts();
 				ResultSet rsUser = usersDAO.getUsers();
