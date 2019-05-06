@@ -32,4 +32,10 @@ private Connection co;
 		stmt.setString(2, hashcart);
 		stmt.executeUpdate();
 	}
+	
+	public void deleteCart(String hashcart) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("DELETE FROM cart WHERE hashcart = ?;");
+		stmt.setString(1, hashcart);
+		stmt.executeUpdate();
+	}
 }
