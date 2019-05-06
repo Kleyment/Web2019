@@ -17,16 +17,11 @@
 	<div class="navbar navbar-default navbar-static-top">
 	      <div class="container">
 	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".header-collapse">
-	            <span class="sr-only"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
 	          </button>
 	          <a id="catalogue" class="navbar-brand" href="#">Panneau Administrateur</a>
 	        </div>
 	        
-	        <div class="collapse navbar-collapse header-collapse">
+	        <div class="navbar-collapse header-collapse">
 	          <ul class="nav navbar-nav">
                 <span class="nav-link liste-item deconnecter"><a href="${pageContext.request.contextPath}/DeconnectServlet">Se déconnecter</a></span>
 	          </ul>

@@ -3,9 +3,8 @@
 }
 
 .deconnecter {
-    margin-left: 200px;
-    position: right;
-    text-align: right;
+    margin-left: 20px;
+    float: right;
 }
 
 .style-bouton {
@@ -43,6 +42,7 @@ a.navbar-brand {
 
 ul.navbar-nav {
     font-size: 25px;
+    float: right;
 }
 
 .items {
