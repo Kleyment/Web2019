@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/connection.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/sjcl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/scriptForAjax.js"></script>
 <title>Modification Utilisateur</title>
 </head>
 <body>
@@ -23,7 +25,7 @@ if (!(request.getAttribute("user") == null)){
 			<div class="panel panel-default">
 				<div class="panel-heading">Modifier un utilisateur</div>
 		        	<div class="panel-body">
-		        		<form id="modify" class="form-horizontal" method="post" action = "UserModifyServlet">
+		        		<form id="form-password" class="form-horizontal" method="post" action = "UserModifyServlet">
 			          		<div class="form-group">
 					            <label for="pseudo" class="col-lg-2 control-label">Pseudo</label>
 					            <div class="col-lg-10">

@@ -74,8 +74,10 @@ public class UserModifyServlet extends HttpServlet {
 			ResultSet rs;
 			try {
 				ResultSet verif = usersDAO.getUser(pseudo);
-				if (verif.next()) {
-					rs = usersDAO.getUser(id);
+				rs = usersDAO.getUser(id);
+				rs.next();
+				if (verif.next() && (verif.getInt(1) != rs.getInt(1))) {
+					rs.beforeFirst();
 					request.setAttribute("user", rs);
 					request.setAttribute("error", "true");
 					RequestDispatcher rd = request.getRequestDispatcher("ModificationUser.jsp");

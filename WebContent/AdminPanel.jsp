@@ -7,9 +7,8 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/connection.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">
-<script id="twitter-wjs" src="${pageContext.request.contextPath}/widgets.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/sjcl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/scriptForAjax.js"></script>
 <title>Panneau Administrateur</title>
 </head>
 <body>
@@ -33,7 +32,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Inscrire un utilisateur</div>
 		        	<div class="panel-body">
-		        		<form class="form-horizontal" method="post" action = "UserInsertServlet">
+		        		<form id="form-password" class="form-horizontal" method="post" action = "UserInsertServlet" onsubmit="return onValidatePassword()">
 			          		<div class="form-group">
 					            <label for="pseudo" class="col-lg-2 control-label">Pseudo</label>
 					            <div class="col-lg-10">
@@ -71,7 +70,7 @@ if (!(request.getAttribute("users") == null)){
 		out.println("<tr>");
 		out.println("<td>"+rs.getInt(1) + "</td>");
 		out.println("<td>"+rs.getString(2) + "</td>");
-		out.println("<td>"+ rs.getString(3) + "</td>");
+		out.println("<td class=\"password-hash\">"+ rs.getString(3) + "</td>");
 		out.println("<td>"+ rs.getString(4) + "</td>");
 		out.println("<form method=\"post\" action=\"UserModifyServlet\" class=\"inline\">");
   		out.println("<input type=\"hidden\" name=\"modif\" value=\"1\">");

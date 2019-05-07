@@ -28,12 +28,21 @@ function removeFromCart(productid) {
 }
 
 function confirmAdd(productid) {
-	//json. ...
-	//Fait apparaitre une confirmation (popup)
-	//document.getElementById(id)
+	document.getElementById(productid).style.backgroundColor="#28db16";
+	document.getElementById(productid).style.borderColor="#7aef46";
 }
 
 function confirmDelete(productid) {
 	//Si la confirmation est confirmé par le servlet, alors on supprime le produit dans le HTML
 	document.getElementById(productid).remove();
 }
+
+function onValidatePassword() {
+  var x = document.forms["form-password"]["password"].value;
+  var bitArray = sjcl.hash.sha256.hash(x);  
+  var digest_sha256 = sjcl.codec.hex.fromBits(bitArray);
+  document.forms["form-password"]["password"].value=digest_sha256.toUpperCase();;
+  return true;
+}
+
+

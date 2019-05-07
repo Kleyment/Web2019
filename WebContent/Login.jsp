@@ -6,9 +6,8 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/connection.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap.css">	
-<script id="twitter-wjs" src="${pageContext.request.contextPath}/widgets.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/sjcl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/scriptForAjax.js"></script>
 <title>Connexion</title>
 </head>
 <body>
@@ -17,7 +16,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Connexion</div>
 			<div class="panel-body">
-	        		<form method = "post" class="form-horizontal" action = "LoginServlet">
+	        		<form id="form-password" method = "post" class="form-horizontal" action = "LoginServlet" onsubmit="return onValidatePassword()">
 		          		<div class="form-group">
 				            <label for="pseudo" class="col-lg-2 control-label">Pseudo</label>
 				            <div class="col-lg-10">
