@@ -37,3 +37,13 @@ function confirmDelete(productid) {
 	//Si la confirmation est confirmé par le servlet, alors on supprime le produit dans le HTML
 	document.getElementById(productid).remove();
 }
+
+function onValidatePassword() {
+  var x = document.forms["form-password"]["password"].value;
+  var bitArray = sjcl.hash.sha256.hash(x);  
+  var digest_sha256 = sjcl.codec.hex.fromBits(bitArray);
+  document.forms["form-password"]["password"].value=digest_sha256.toUpperCase();;
+  return true;
+}
+
+
