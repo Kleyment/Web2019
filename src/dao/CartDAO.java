@@ -50,4 +50,11 @@ private Connection co;
 		return stmt.executeQuery();
 	}
 	
+	public void updateCart(String hashBefore, String hashAfter) throws SQLException {
+		PreparedStatement stmt = co.prepareStatement("UPDATE cart SET hashcart = ? WHERE hashcart = ?");
+		stmt.setString(1, hashAfter);
+		stmt.setString(2, hashBefore);
+		stmt.executeUpdate();
+	}
+	
 }

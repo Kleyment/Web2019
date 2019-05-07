@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CartDAO;
 import dao.ProductsDAO;
 import dao.UsersDAO;
 
@@ -23,6 +24,7 @@ public class UserModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private UsersDAO usersDAO; 
     private ProductsDAO productsDAO;
+    private CartDAO cartDAO;
     private int id;
 	
     /**
@@ -32,6 +34,7 @@ public class UserModifyServlet extends HttpServlet {
         super();
         usersDAO = new UsersDAO();
         productsDAO = new ProductsDAO();
+        cartDAO = new CartDAO();
         // TODO Auto-generated constructor stub
     }
 
@@ -79,7 +82,14 @@ public class UserModifyServlet extends HttpServlet {
 					rd.forward(request, response);
 				} else {
 					request.setAttribute("error", "false");
+					rs = usersDAO.getUser(id);
+					rs.next();
+					String hashBefore = rs.getString(5);
 					usersDAO.modifyUser(id, pseudo, password, role);
+					rs = usersDAO.getUser(id);
+					rs.next();
+					String hashAfter = rs.getString(5);
+					cartDAO.updateCart(hashBefore, hashAfter);
 					rsUser = usersDAO.getUsers();
 					ResultSet rsProduct = productsDAO.getProducts();
 					request.setAttribute("users", rsUser);
