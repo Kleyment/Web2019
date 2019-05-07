@@ -28,9 +28,8 @@ function removeFromCart(productid) {
 }
 
 function confirmAdd(productid) {
-	//json. ...
-	//Fait apparaitre une confirmation (popup)
-	//document.getElementById(id)
+	document.getElementById(productid).style.backgroundColor="#28db16";
+	document.getElementById(productid).style.borderColor="#7aef46";
 }
 
 function confirmDelete(productid) {

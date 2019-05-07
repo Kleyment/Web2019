@@ -62,7 +62,7 @@
 			          out.println("</div>");
 			          out.println("<div class=\"col-sm-3 zone-prix\">");
 			            out.println("<div class=\"prix\">Prix "+rs.getDouble(3)+" €</div>");
-			            out.println("<a id=\"btn-panier\" class=\"btn btn-primary float-right btn-lg style-bouton\" onclick=\"addToCart("+rs.getInt(1)+");\" role=\"button\">");
+			            out.println("<a id=\""+rs.getInt(1)+"\" class=\"btn btn-primary float-right btn-lg style-bouton\" onclick=\"addToCart("+rs.getInt(1)+");\" role=\"button\">");
 			            out.println("<span class=\"glyphicon glyphicon-shopping-cart\"/> <span class=\"style-bouton\">Ajouter au panier</span></a>");
 			          out.println("</div>");
 			        out.println("</div>");
